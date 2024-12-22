@@ -4,6 +4,8 @@ import Slider from "../components/Slider";
 import ErrorElement from "../components/ErrorElement";
 import Spinner from "../components/Spinner";
 import { AuthContext } from "../providers/AuthProvider";
+import UpcomingMarathons from "../components/UpcomingMarathons";
+import WhyUs from "../components/WhyUs";
 
 const Home = () => {
   const data = useLoaderData();
@@ -40,11 +42,16 @@ const Home = () => {
         <Slider sliders={sliders}></Slider>
       </section>
 
-      
+      {/* Marathon Section */}
+
+      {/* Upcomming Marathon Section */}
+      <section>
+        <UpcomingMarathons></UpcomingMarathons>
+      </section>
 
       {/* Why to choose us*/}
       <section>
-        Why us section
+        <WhyUs />
       </section>
 
       {/* Extra Section 2 */}
