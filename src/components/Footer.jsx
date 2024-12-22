@@ -1,7 +1,7 @@
 import React from "react";
 import { FaFacebookF, FaTwitter, FaInstagram, FaLinkedinIn } from "react-icons/fa";
 import { Link } from "react-router-dom";
-// import logo from '../assets/newLogo1.png'
+import logo from '../assets/logo.png'
 
 const Footer = () => {
   return (
@@ -11,15 +11,13 @@ const Footer = () => {
         <div>
           <Link to="/" className="flex items-center gap-3 mb-4">
             <img
-            //   src={logo}
+              src={logo}
               alt="Marathon Hub Logo"
-              className="w-12 h-12 object-cover"
+              className="w-[120px] object-cover"
             />
-            <h1 className="text-2xl font-bold text-[#3E95FF]">Marathon Fund</h1>
           </Link>
           <p>
-            Marathon Hub is a trusted crowdfunding platform connecting campaigns with donors. 
-            Together, we can make a difference!
+          Marathon Hub is your trusted platform for organizing and participating in marathon events. Discover races, connect with organizers, and manage your registrations—all in one place.
           </p>
         </div>
 
