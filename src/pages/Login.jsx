@@ -21,7 +21,7 @@ const Login = () => {
    const PassRegEX = /^(?=.*[A-Z])(?=.*[a-z])[A-Za-z\d@$!%*?&#]{6,}$/
 
    // change the title:
-   document.title = "Login | Unity Fund";
+   document.title = "Login | Marathon Hub";
 
    function handleSubmit(e) {
 

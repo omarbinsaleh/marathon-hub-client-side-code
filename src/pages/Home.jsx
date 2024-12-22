@@ -17,7 +17,7 @@ const Home = () => {
   const {darkMood, setDarkMood} = useContext(AuthContext);
 
   // change the page title:
-  document.title = "Home | Unity Fund";
+  document.title = "Home | Marathon Hub";
 
   useEffect(() => {
     // fetch 6 running campaigns:

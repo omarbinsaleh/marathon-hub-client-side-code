@@ -22,7 +22,7 @@ const Register = () => {
    })
 
    // change the title:
-   document.title = "Sign-Up | Unity Fund";
+   document.title = "Sign-Up | Marathon Hub";
 
    function handleSubmit(e) {
       e.preventDefault();
