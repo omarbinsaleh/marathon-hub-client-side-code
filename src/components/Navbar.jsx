@@ -47,7 +47,7 @@ const Navbar = () => {
          <div className='flex items-center justify-between h-[80px'>
             {/* nav start */}
             <div className='flex items-center gap-2'>
-               <a href='#home' className='w-[110px] h-[48px] btn btn-ghost p-0 py-0 hover:bg-white'><img className='w-full h-full mix-blend-multiply dark:mix-blend-normal' src={newLogo} alt="" /></a>
+               <Link to='/' className='w-[110px] h-[48px] btn btn-ghost p-0 py-0 hover:bg-transparent active:bg-transparent focus:bg-transparent'><img className='w-full h-full mix-blend-multiply dark:mix-blend-normal' src={newLogo} alt="" /></Link>
             </div>
 
 
