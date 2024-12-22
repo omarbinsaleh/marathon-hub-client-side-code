@@ -8,6 +8,7 @@ import Dashboard from "../pages/Dashboard";
 import AddMarathon from "../pages/AddMarathon";
 import MyMarathonList from "../pages/MyMarathonList";
 import MyApplyList from "../pages/MyApplyList";
+import PrivateRoutes from "./PrivateRoutes";
 
 const router = createBrowserRouter([
    {
@@ -21,19 +22,35 @@ const router = createBrowserRouter([
          },
          {
             path: '/dashboard',
-            element: <Dashboard></Dashboard>,
+            element: (
+               <PrivateRoutes>
+                  <Dashboard></Dashboard>
+               </PrivateRoutes>
+            ),
             children: [
                {
                   path: '/dashboard/add-marathon',
-                  element: <AddMarathon></AddMarathon>
+                  element: (
+                     <PrivateRoutes>
+                        <AddMarathon></AddMarathon>
+                     </PrivateRoutes>
+                  ),
                },
                {
                   path: '/dashboard/my-marathons-list',
-                  element: <MyMarathonList></MyMarathonList>
+                  element: (
+                     <PrivateRoutes>
+                        <MyMarathonList></MyMarathonList>
+                     </PrivateRoutes>
+                  ),
                },
                {
                   path: '/dashboard/my-apply-list',
-                  element: <MyApplyList></MyApplyList>
+                  element: (
+                     <PrivateRoutes>
+                        <MyApplyList></MyApplyList>
+                     </PrivateRoutes>
+                  ),
                }
             ]
          },
