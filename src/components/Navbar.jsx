@@ -52,7 +52,7 @@ const Navbar = () => {
 
 
             {/* nav center | links */}
-            <div className='hidden lg:block'>
+            <div className='hidden md:block'>
                <ul className='flex items-center gap-7 justify-center dark:text-white'>
                   {/* <li><NavLink to='/' onClick={hideLink} className='' > Home</NavLink></li> */}
                   {/* <li><NavLink to='/about' onClick={hideLink} >About</NavLink></li> */}
@@ -61,12 +61,12 @@ const Navbar = () => {
                </ul>
             </div>
 
-            <div className='space-x-2 lg:hidden'>
+            <div className='space-x-2 md:hidden'>
                <ThemeToggle></ThemeToggle>
-               <button onClick={handleBarClick} className='btn lg:hidden bg-transparent  text-2xl px-3 font-extrabold dark:text-white'>{showLink ? <RxCross2 /> : <HiMiniBars3 />}</button>
+               <button onClick={handleBarClick} className='btn md:hidden bg-transparent  text-2xl px-3 font-extrabold dark:text-white'>{showLink ? <RxCross2 /> : <HiMiniBars3 />}</button>
             </div>
             {
-               user ? <div className='hidden lg:flex items-center gap-2'>
+               user ? <div className='hidden md:flex items-center gap-2'>
                   <div>
                      {/* <button onClick={() => setDarkMood(!darkMood)} className='btn'>{darkMood ? 'Light' : 'Dark'}</button> */}
                      <ThemeToggle></ThemeToggle>
