@@ -80,7 +80,7 @@ const Navbar = () => {
                      />
                   </div>
                   <div>
-                     <button onClick={handleLogout} className='btn btn-md bg-opacity-50 border-none bg-blue-300 flex items-center justify-center'> <VscSignOut className='text-[17px]' /> Sign out</button>
+                     <button onClick={handleLogout} className='btn btn-md bg-opacity-80 border-none bg-blue-900 text-white rounded-md flex items-center justify-center'> <VscSignOut className='text-[17px]' /> Sign out</button>
                   </div>
                </div> : <div className='hidden lg:flex items-center gap-2'>
                   <div>
@@ -91,7 +91,7 @@ const Navbar = () => {
                      <Link to={'/auth/register'} className='btn btn-md bg-opacity-50 border-none bg-blue-300 flex items-center justify-center' >Register</Link>
                   </div>
                   <div>
-                     <Link to='/auth/login' className='btn btn-md bg-opacity-50 border-none bg-blue-300 flex items-center justify-center' >  <VscSignIn className='text-[17px]' /> Sign In</Link>
+                     <Link to='/auth/login' className='btn btn-md bg-opacity-80 border-none rounded-md bg-blue-900 text-white flex items-center justify-center' >  <VscSignIn className='text-[17px]' /> Sign In</Link>
                   </div>
                </div>
             }
@@ -109,7 +109,7 @@ const Navbar = () => {
                   </ul>
                </li>
                <li>
-                  {user ? <button onClick={handleLogout} className='btn bg-opacity-50 border-none bg-blue-300 flex items-center justify-center'> <VscSignOut className='text-[17px]' /> Sign out</button> : <Link to='/auth/login' onClick={() => setShowLink(false)} className='btn bg-opacity-50 border-none bg-blue-300 flex items-center justify-center' > <VscSignIn className='text-[17px]' /> Sign In</Link>}
+                  {user ? <button onClick={handleLogout} className='btn btn-md btn-block bg-opacity-80 border-none bg-blue-900 text-white rounded-md  flex items-center justify-center'> <VscSignOut className='text-[17px]' /> Sign out</button> : <Link to='/auth/login' onClick={() => setShowLink(false)} className='btn bg-opacity-50 border-none bg-blue-300 flex items-center justify-center' > <VscSignIn className='text-[17px]' /> Sign In</Link>}
                </li>
             </ul>
          </div>

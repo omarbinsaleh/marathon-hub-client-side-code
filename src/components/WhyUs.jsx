@@ -34,22 +34,22 @@ const WhyUs = () => {
   ];
 
   return (
-    <section className="bg-gradient-to-r from-gray-50 via-white to-gray-50 py-12 px-6">
+    <section className="bg-gradient-to-r from-gray-50 via-white to-gray-50 py-12 px-6 dark:bg-gradient-to-r dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
       <div className="container mx-auto">
-        <h2 className="text-4xl font-extrabold text-center text-gray-800 mb-10">
+        <h2 className="text-4xl font-extrabold text-center text-gray-800 mb-10 dark:text-white">
           Why Choose <span className="text-blue-800">Marathon Hub?</span>
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {features.map((feature) => (
             <div
               key={feature.id}
-              className="card bg-white shadow-lg hover:shadow-xl  hover:scale-105 active:scale-110 transition-transform duration-300 p-6 rounded-md text-center"
+              className="card bg-white dark:bg-gray-800 dark:text-white dark:border border-gray-700 shadow-lg hover:shadow-xl  hover:scale-105 active:scale-110 transition-transform duration-300 p-6 rounded-md text-center"
             >
               {feature.icon}
-              <h3 className="text-xl font-semibold text-gray-900 mb-3">
+              <h3 className="text-xl font-semibold text-gray-900 mb-3 dark:text-white">
                 {feature.title}
               </h3>
-              <p className="text-gray-600">{feature.description}</p>
+              <p className="text-gray-600 dark:text-gray-300">{feature.description}</p>
             </div>
           ))}
         </div>

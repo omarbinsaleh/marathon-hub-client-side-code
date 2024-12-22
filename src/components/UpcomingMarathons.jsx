@@ -54,16 +54,16 @@ const marathons = [
 
 const UpcomingMarathons = () => {
   return (
-    <section className="bg-gray-50 py-12 px-6">
+    <section className="bg-gray-50 py-12 px-6 dark:bg-gray-900">
       <div className="container mx-auto">
-        <h2 className="text-3xl font-bold text-center text-gray-800 mb-8">
+        <h2 className="text-3xl font-bold text-center text-gray-800 mb-8 dark:text-white">
           Upcoming Marathons
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {marathons.map((marathon) => (
             <div
               key={marathon.id}
-              className="card bg-white shadow-xl hover:shadow-2xl transition-shadow duration-300 rounded-sm overflow-hidden"
+              className="card bg-white shadow-xl hover:shadow-2xl transition-shadow duration-300 rounded-sm overflow-hidden dark:bg-gray-800"
             >
               <img
                 src={marathon.image}
@@ -71,10 +71,10 @@ const UpcomingMarathons = () => {
                 className="w-full h-48 object-cover"
               />
               <div className="p-6">
-                <h3 className="text-xl font-semibold text-gray-900 mb-2">
+                <h3 className="text-xl font-semibold text-gray-900 mb-2 dark:text-white">
                   {marathon.name}
                 </h3>
-                <div className="text-gray-600 mb-4">
+                <div className="text-gray-600 mb-4 dark:text-gray-300">
                   <div className="flex items-center gap-2 mb-1">
                     <FaCalendarAlt className="text-blue-500" />
                     <span>{marathon.date}</span>
