@@ -6,6 +6,7 @@ import Spinner from "../components/Spinner";
 import { AuthContext } from "../providers/AuthProvider";
 import UpcomingMarathons from "../components/UpcomingMarathons";
 import WhyUs from "../components/WhyUs";
+import AboutUs from "../components/AboutUs";
 
 const Home = () => {
   const data = useLoaderData();
@@ -54,9 +55,9 @@ const Home = () => {
         <WhyUs />
       </section>
 
-      {/* Extra Section 2 */}
+      {/* About us section */}
       <section>
-        How it works sections
+        <AboutUs></AboutUs>
       </section>
     </div>
   );
