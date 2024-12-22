@@ -1,9 +1,9 @@
 import { useContext, useState } from 'react'
 import { HiMiniBars3 } from 'react-icons/hi2';
 import { RxCross2 } from 'react-icons/rx';
-import { FaBriefcase, FaDatabase, FaHome, FaListAlt, } from 'react-icons/fa';
+import { FaArrowDown, FaBriefcase, FaChevronDown, FaChevronUp, FaDatabase, FaHome, FaListAlt, } from 'react-icons/fa';
 import { IoIosContact, IoIosSearch } from 'react-icons/io';
-import { MdDesignServices } from 'react-icons/md';
+import { MdDashboard, MdDesignServices } from 'react-icons/md';
 import { IoNewspaper } from 'react-icons/io5';
 import { RiMessage2Fill } from 'react-icons/ri';
 import logo from '../assets/newLogo2.png';
@@ -21,6 +21,7 @@ const Navbar = () => {
 
    const { user, signOutUser } = useContext(AuthContext);
    const [showLink, setShowLink] = useState(false);
+   const [showMenu, setShowMenu] = useState(false);
 
 
    function handleBarClick() {
@@ -34,6 +35,7 @@ const Navbar = () => {
    function handleLogout() {
       // logout the user:
       // logOut();
+      setShowLink(false)
       signOutUser()
 
       navigate('/')
@@ -45,7 +47,7 @@ const Navbar = () => {
          <div className='flex items-center justify-between h-[80px'>
             {/* nav start */}
             <div className='flex items-center gap-2'>
-               <a href='#home' className='w-[110px] h-[48px] btn btn-ghost p-0 py-0 hover:bg-white'><img className='w-full h-full mix-blend-multiply dark:mix-blend-normal' src={newLogo} alt="" /></a> 
+               <a href='#home' className='w-[110px] h-[48px] btn btn-ghost p-0 py-0 hover:bg-white'><img className='w-full h-full mix-blend-multiply dark:mix-blend-normal' src={newLogo} alt="" /></a>
             </div>
 
 
@@ -55,7 +57,7 @@ const Navbar = () => {
                   {/* <li><NavLink to='/' onClick={hideLink} className='' > Home</NavLink></li> */}
                   {/* <li><NavLink to='/about' onClick={hideLink} >About</NavLink></li> */}
                   <li><NavLink to='/marathons' onClick={hideLink} >Marathons</NavLink></li>
-                  <li><NavLink to='/dashboard' onClick={hideLink} >Dashboard</NavLink></li>
+                  <li className={user ? 'block' : 'hidden'}><NavLink to='/dashboard' onClick={hideLink} >Dashboard</NavLink></li>
                </ul>
             </div>
 
@@ -97,10 +99,17 @@ const Navbar = () => {
          {/* nav links */}
          <div className={` ${showLink ? 'block animate__animated animate__fadeInDown' : 'hidden animate_animated animate_fadeInUp'} pt-3`}>
             <ul className='pb-4 space-y-3 text-lg dark:text-white'>
-               <li><NavLink to='/marathons' onClick={hideLink} className='flex items-center gap-2 p-2'> <FaListAlt /> Marathons</NavLink></li>
-               <li>Dashboard</li>
+               <li><NavLink to='/marathons' onClick={hideLink} className='flex items-center gap-2 p-2'> <FaListAlt /> Marathons</NavLink> </li>
+               <li onClick={() => setShowMenu(!showMenu)} className={user ? 'block' : 'hidden'}>
+                  <div className='flex items-center justify-between pr-5'><span className='flex items-center gap-2 p-2'> <MdDashboard /> Dashboard</span> {showMenu ? <FaChevronUp /> : <FaChevronDown />}</div>
+                  <ul className={`${showMenu ? 'block' : 'hidden'} px-4`}>
+                     <li><NavLink to='/dashboard/add-marathon' onClick={hideLink} className='flex items-center gap-2 p-2'> <FaDatabase /> Add Marathon</NavLink> </li>
+                     <li><NavLink to='/dashboard/my-marathons-list' onClick={hideLink} className='flex items-center gap-2 p-2'> <IoNewspaper /> My Marathons List </NavLink> </li>
+                     <li><NavLink to='/dashboard/my-apply-list' onClick={hideLink} className='flex items-center gap-2 p-2'> <RiMessage2Fill /> My Apply List</NavLink> </li>
+                  </ul>
+               </li>
                <li>
-                  {user ? <button onClick={handleLogout} className='btn bg-opacity-50 border-none bg-blue-300 flex items-center justify-center'> <VscSignOut className='text-[17px]' /> Sign out</button> : <Link to='/auth/login' className='btn bg-opacity-50 border-none bg-blue-300 flex items-center justify-center' > <VscSignIn className='text-[17px]' /> Sign In</Link>}
+                  {user ? <button onClick={handleLogout} className='btn bg-opacity-50 border-none bg-blue-300 flex items-center justify-center'> <VscSignOut className='text-[17px]' /> Sign out</button> : <Link to='/auth/login' onClick={() => setShowLink(false)} className='btn bg-opacity-50 border-none bg-blue-300 flex items-center justify-center' > <VscSignIn className='text-[17px]' /> Sign In</Link>}
                </li>
             </ul>
          </div>
