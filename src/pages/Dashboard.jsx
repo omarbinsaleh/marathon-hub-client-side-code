@@ -15,7 +15,7 @@ const Dashboard = () => {
   };
 
   const menuItems = [
-    { name: "Home", path: "/", icon: <FaHome /> },
+    { name: "Home", path: "/dashboard", icon: <FaHome /> },
     { name: "Add Marathon", path: "/dashboard/add-marathon", icon: <FaPlus /> },
     { name: "My Marathons List", path: "/dashboard/my-marathons-list", icon: <FaList /> },
     { name: "My Apply List", path: "/dashboard/my-apply-list", icon: <FaClipboardList /> },

@@ -10,6 +10,7 @@ import MyMarathonList from "../pages/MyMarathonList";
 import MyApplyList from "../pages/MyApplyList";
 import PrivateRoutes from "./PrivateRoutes";
 import Profile from "../pages/Profile";
+import DashboardHome from "../pages/DashboardHome";
 
 const router = createBrowserRouter([
    {
@@ -29,6 +30,10 @@ const router = createBrowserRouter([
                </PrivateRoutes>
             ),
             children: [
+               {
+                  index: true,
+                  element: <DashboardHome></DashboardHome>
+               },
                {
                   path: '/dashboard/add-marathon',
                   element: (

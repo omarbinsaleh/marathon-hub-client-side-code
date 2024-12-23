@@ -103,6 +103,7 @@ const Navbar = () => {
                <li onClick={() => setShowMenu(!showMenu)} className={user ? 'block' : 'hidden'}>
                   <div className='flex items-center justify-between pr-5'><span className='flex items-center gap-2 p-2'> <MdDashboard /> Dashboard</span> {showMenu ? <FaChevronUp /> : <FaChevronDown />}</div>
                   <ul className={`${showMenu ? 'block' : 'hidden'} px-4`}>
+                  <li><NavLink to='/dashboard' onClick={hideLink} className='flex items-center gap-2 p-2'> <FaHome /> Home</NavLink> </li>
                      <li><NavLink to='/dashboard/add-marathon' onClick={hideLink} className='flex items-center gap-2 p-2'> <FaDatabase /> Add Marathon</NavLink> </li>
                      <li><NavLink to='/dashboard/my-marathons-list' onClick={hideLink} className='flex items-center gap-2 p-2'> <IoNewspaper /> My Marathons List </NavLink> </li>
                      <li><NavLink to='/dashboard/my-apply-list' onClick={hideLink} className='flex items-center gap-2 p-2'> <RiMessage2Fill /> My Apply List</NavLink> </li>
