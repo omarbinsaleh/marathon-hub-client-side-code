@@ -72,7 +72,7 @@ const Navbar = () => {
                      <ThemeToggle></ThemeToggle>
                   </div>
                   <div>
-                     <Link to={'/dashboard'}><img className='w-12 p-1 rounded-full border aspect-square user-profile' referrerPolicy='no-referrer' src={user?.photoURL ? user.photoURL : profileImg} alt="" /></Link>
+                     <Link to={'/dashboard/profile'}><img className='w-12 p-1 rounded-full border aspect-square user-profile' referrerPolicy='no-referrer' src={user?.photoURL ? user.photoURL : profileImg} alt="" /></Link>
 
                      <Tooltip
                         anchorSelect=".user-profile"

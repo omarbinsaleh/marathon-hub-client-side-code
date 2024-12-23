@@ -9,6 +9,7 @@ import AddMarathon from "../pages/AddMarathon";
 import MyMarathonList from "../pages/MyMarathonList";
 import MyApplyList from "../pages/MyApplyList";
 import PrivateRoutes from "./PrivateRoutes";
+import Profile from "../pages/Profile";
 
 const router = createBrowserRouter([
    {
@@ -49,6 +50,14 @@ const router = createBrowserRouter([
                   element: (
                      <PrivateRoutes>
                         <MyApplyList></MyApplyList>
+                     </PrivateRoutes>
+                  ),
+               },
+               {
+                  path: '/dashboard/profile',
+                  element: (
+                     <PrivateRoutes>
+                        <Profile></Profile>
                      </PrivateRoutes>
                   ),
                }

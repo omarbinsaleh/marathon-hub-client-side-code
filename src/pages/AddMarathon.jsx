@@ -72,7 +72,7 @@ const AddMarathon = () => {
       <h2 className="text-3xl font-bold text-center mb-8">Add a Marathon</h2>
       <form
         onSubmit={handleSubmit}
-        className="max-w-3xl mx-auto bg-white dark:bg-gray-800 shadow-lg rounded-lg p-8 space-y-6"
+        className="w-full mx-auto bg-white dark:bg-gray-800 shadow-lg rounded-lg p-8 space-y-6"
         encType="multipart/form-data"
       >
         {/* Marathon Title */}
