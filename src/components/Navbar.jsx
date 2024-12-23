@@ -72,7 +72,7 @@ const Navbar = () => {
                      <ThemeToggle></ThemeToggle>
                   </div>
                   <div>
-                     <Link to={'/dashboard'}><img className='w-12 p-1 rounded-full border aspect-square user-profile' src={user?.photoURL ? user.photoURL : profileImg} alt="" /></Link>
+                     <Link to={'/dashboard'}><img className='w-12 p-1 rounded-full border aspect-square user-profile' referrerPolicy='no-referrer' src={user?.photoURL ? user.photoURL : profileImg} alt="" /></Link>
 
                      <Tooltip
                         anchorSelect=".user-profile"
@@ -88,7 +88,7 @@ const Navbar = () => {
                      <ThemeToggle></ThemeToggle>
                   </div>
                   <div>
-                     <Link to={'/auth/register'} className='btn btn-md bg-opacity-50 border-none bg-blue-300 flex items-center justify-center' >Register</Link>
+                     <Link to={'/auth/register'} className='btn btn-md bg-opacity-80 border-none rounded-md bg-blue-900 text-white flex items-center justify-center' >Register</Link>
                   </div>
                   <div>
                      <Link to='/auth/login' className='btn btn-md bg-opacity-80 border-none rounded-md bg-blue-900 text-white flex items-center justify-center' >  <VscSignIn className='text-[17px]' /> Sign In</Link>
