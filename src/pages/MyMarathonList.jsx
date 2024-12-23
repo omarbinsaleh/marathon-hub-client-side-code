@@ -41,6 +41,7 @@ const MyMarathonList = () => {
     // Implement delete functionality here (e.g., API call to remove marathon)
   };
 
+  // if loading is true, render the spinner
   if (loading) {
     return <Spinner></Spinner>
   }
