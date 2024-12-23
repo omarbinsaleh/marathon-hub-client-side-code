@@ -1,7 +1,7 @@
 import { useContext, useState } from 'react'
 import { HiMiniBars3 } from 'react-icons/hi2';
 import { RxCross2 } from 'react-icons/rx';
-import { FaArrowDown, FaBriefcase, FaChevronDown, FaChevronUp, FaDatabase, FaHome, FaListAlt, } from 'react-icons/fa';
+import { FaArrowDown, FaBriefcase, FaChevronDown, FaChevronUp, FaDatabase, FaHome, FaListAlt, FaUser, } from 'react-icons/fa';
 import { IoIosContact, IoIosSearch } from 'react-icons/io';
 import { MdDashboard, MdDesignServices } from 'react-icons/md';
 import { IoNewspaper } from 'react-icons/io5';
@@ -106,6 +106,7 @@ const Navbar = () => {
                      <li><NavLink to='/dashboard/add-marathon' onClick={hideLink} className='flex items-center gap-2 p-2'> <FaDatabase /> Add Marathon</NavLink> </li>
                      <li><NavLink to='/dashboard/my-marathons-list' onClick={hideLink} className='flex items-center gap-2 p-2'> <IoNewspaper /> My Marathons List </NavLink> </li>
                      <li><NavLink to='/dashboard/my-apply-list' onClick={hideLink} className='flex items-center gap-2 p-2'> <RiMessage2Fill /> My Apply List</NavLink> </li>
+                     <li><NavLink to='/dashboard/profile' onClick={hideLink} className='flex items-center gap-2 p-2'> <FaUser />My Profile</NavLink> </li>
                   </ul>
                </li>
                <li>
