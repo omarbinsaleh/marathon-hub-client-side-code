@@ -68,8 +68,8 @@ const AddMarathon = () => {
   };
 
   return (
-    <div className="container mx-auto py-12">
-      <h2 className="text-3xl font-bold text-center mb-8">Add a Marathon</h2>
+    <div className="container mx-auto py-12 pt-6">
+      <h2 className="text-3xl font-bold text-center mb-8">Create New Marathon</h2>
       <form
         onSubmit={handleSubmit}
         className="w-full mx-auto bg-white dark:bg-gray-800 shadow-lg rounded-lg p-8 space-y-6"
@@ -195,7 +195,7 @@ const AddMarathon = () => {
             type="submit"
             className="btn btn-primary w-full md:w-auto bg-blue-900 text-white rounded-md"
           >
-            Submit Marathon
+            Create Marathon
           </button>
         </div>
       </form>

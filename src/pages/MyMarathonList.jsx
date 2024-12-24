@@ -56,12 +56,12 @@ const MyMarathonList = () => {
               <thead>
                 <tr className="bg-gray-200 dark:bg-gray-700">
                   <th className="p-4">#</th>
-                  <th className="p-4">Title</th>
+                  <th className="p-4 min-w-[250px]">Title</th>
                   <th className="p-4">Start Date</th>
-                  <th className="p-4">Registration</th>
-                  <th className="p-4">Location</th>
+                  <th className="p-4 min-w-[200px]">Registration</th>
+                  <th className="p-4 min-w-[150px]">Location</th>
                   <th className="p-4">Distance</th>
-                  <th className="p-4">Actions</th>
+                  <th className="p-4 min-w-[200px]">Actions</th>
                 </tr>
               </thead>
               <tbody>
@@ -79,14 +79,14 @@ const MyMarathonList = () => {
                       <div className="flex items-center gap-2">
                         <button
                           onClick={() => handleEdit(marathon._id)}
-                          className="btn btn-sm rounded-md btn-primary flex items-center gap-1"
+                          className="btn btn-sm rounded-md btn-primary bg-blue-800 flex items-center gap-1 text-white"
                         >
                           <FaEdit />
                           <span>Edit</span>
                         </button>
                         <button
                           onClick={() => handleDelete(marathon._id)}
-                          className="btn btn-sm btn-error rounded-md flex items-center gap-1"
+                          className="btn btn-sm btn-error rounded-md flex items-center gap-1 text-white"
                         >
                           <FaTrash />
                           <span>Delete</span>
