@@ -1,8 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { FaRunning, FaCalendarAlt, FaUsers, FaTrophy } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../providers/AuthProvider';
 
 const DashboardHome = () => {
+
+  const {user} = useContext(AuthContext);
+
   // Example data
   const userStats = {
     totalMarathons: 5,
@@ -11,12 +15,12 @@ const DashboardHome = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100 p-6">
+    <div className="min-h-screen bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100 ">
       <div className="max-w-7xl mx-auto space-y-6">
         {/* Welcome Section */}
-        <div className="bg-white dark:bg-gray-800 p-6 rounded-md shadow-md">
-          <h2 className="text-2xl font-bold text-gray-800 dark:text-gray-200">
-            Welcome back, User!
+        <div className="bg-white/40 dark:bg-gray-800 p-6 rounded-md shadow-md">
+          <h2 className="text-2xl font-bold text-gray-800 dark:text-gray-200 capitalize">
+            Welcome back, <span className='font-bold text-blue-800'>{user?.displayName}</span>!
           </h2>
           <p className="text-gray-600 dark:text-gray-400 mt-2">
             Here's a quick overview of your dashboard. Manage your marathons, view statistics, and more.
@@ -24,8 +28,8 @@ const DashboardHome = () => {
         </div>
 
         {/* Overview Card Section */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          <div className="card bg-white dark:bg-gray-800 shadow-md p-6 rounded-md">
+        <div className="grid grid-cols-2 sm:grid-cols-2  lg:grid-cols-4 gap-6">
+          <div className="card bg-white dark:bg-gray-800 shadow-md p-2 justify-center rounded-md">
             <div className="flex items-center flex-col justify-center">
               <FaRunning className="text-4xl text-indigo-500" />
               <div className='text-center'>
