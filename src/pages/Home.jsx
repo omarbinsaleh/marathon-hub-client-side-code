@@ -40,7 +40,7 @@ const Home = () => {
     <div className={`bg-gray-50 ${darkMood ? 'dark' : ''} dark:bg-slate-800`}>
       {/* Banner/Slider Section */}
       <section>
-        <Slider sliders={sliders}></Slider>
+        <Slider></Slider>
       </section>
 
       {/* Marathon Section */}
