@@ -11,6 +11,7 @@ import MyApplyList from "../pages/MyApplyList";
 import PrivateRoutes from "./PrivateRoutes";
 import Profile from "../pages/Profile";
 import DashboardHome from "../pages/DashboardHome";
+import AllMarathons from "../pages/AllMarathons";
 
 const router = createBrowserRouter([
    {
@@ -67,6 +68,14 @@ const router = createBrowserRouter([
                   ),
                }
             ]
+         },
+         {
+            path: '/marathons',
+            element: (
+               <PrivateRoutes>
+                  <AllMarathons></AllMarathons>
+               </PrivateRoutes>
+            )
          },
          {
             path: '/auth/login',
