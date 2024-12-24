@@ -35,7 +35,7 @@ const Dashboard = () => {
             <NavLink
               key={index}
               to={item.path}
-              className="flex items-center space-x-4 p-3 rounded-none hover:bg-gray-200 dark:hover:bg-gray-700"
+              className="flex items-center space-x-4 p-3 pl-8 rounded-none hover:bg-gray-200 dark:hover:bg-gray-700"
             >
               <span className="text-xl">{item.icon}</span>
               <span>{item.name}</span>
