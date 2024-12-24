@@ -7,6 +7,7 @@ import { AuthContext } from "../providers/AuthProvider";
 import UpcomingMarathons from "../components/UpcomingMarathons";
 import WhyUs from "../components/WhyUs";
 import AboutUs from "../components/AboutUs";
+import Marathons from "../components/Marathons";
 
 const Home = () => {
   const data = useLoaderData();
@@ -44,6 +45,9 @@ const Home = () => {
       </section>
 
       {/* Marathon Section */}
+      <section>
+        <Marathons></Marathons>
+      </section>
 
       {/* Upcomming Marathon Section */}
       <section>

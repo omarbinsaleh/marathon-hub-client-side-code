@@ -54,7 +54,7 @@ const MyMarathonList = () => {
           <div className="overflow-x-auto w-full">
             <table className="table  w-full">
               <thead>
-                <tr className="bg-gray-200 dark:bg-gray-700">
+                <tr className="bg-gray-200 dark:bg-gray-700 dark:text-white ">
                   <th className="p-4">#</th>
                   <th className="p-4 min-w-[250px]">Title</th>
                   <th className="p-4">Start Date</th>
