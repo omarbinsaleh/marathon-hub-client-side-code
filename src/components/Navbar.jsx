@@ -54,7 +54,7 @@ const Navbar = () => {
             {/* nav center | links */}
             <div className='hidden md:block'>
                <ul className='flex items-center gap-7 justify-center dark:text-white'>
-                  {/* <li><NavLink to='/' onClick={hideLink} className='' > Home</NavLink></li> */}
+                  <li><NavLink to='/' onClick={hideLink} className='' > Home</NavLink></li>
                   {/* <li><NavLink to='/about' onClick={hideLink} >About</NavLink></li> */}
                   <li><NavLink to='/marathons' onClick={hideLink} >Marathons</NavLink></li>
                   <li className={user ? 'block' : 'hidden'}><NavLink to='/dashboard' onClick={hideLink} >Dashboard</NavLink></li>
@@ -99,11 +99,12 @@ const Navbar = () => {
          {/* nav links */}
          <div className={` ${showLink ? 'block animate__animated animate__fadeInDown' : 'hidden animate_animated animate_fadeInUp'} pt-3`}>
             <ul className='pb-4 space-y-3 text-lg dark:text-white'>
+               <li><NavLink to='/' onClick={hideLink} className='flex items-center gap-2 p-2'> <FaHome /> Home</NavLink></li>
                <li><NavLink to='/marathons' onClick={hideLink} className='flex items-center gap-2 p-2'> <FaListAlt /> Marathons</NavLink> </li>
                <li onClick={() => setShowMenu(!showMenu)} className={user ? 'block' : 'hidden'}>
                   <div className='flex items-center justify-between pr-5'><span className='flex items-center gap-2 p-2'> <MdDashboard /> Dashboard</span> {showMenu ? <FaChevronUp /> : <FaChevronDown />}</div>
                   <ul className={`${showMenu ? 'block' : 'hidden'} px-4`}>
-                  <li><NavLink to='/dashboard' onClick={hideLink} className='flex items-center gap-2 p-2'> <FaHome /> Home</NavLink> </li>
+                     <li><NavLink to='/dashboard' onClick={hideLink} className='flex items-center gap-2 p-2'> <FaHome /> Home</NavLink> </li>
                      <li><NavLink to='/dashboard/add-marathon' onClick={hideLink} className='flex items-center gap-2 p-2'> <FaDatabase /> Add Marathon</NavLink> </li>
                      <li><NavLink to='/dashboard/my-marathons-list' onClick={hideLink} className='flex items-center gap-2 p-2'> <IoNewspaper /> My Marathons List </NavLink> </li>
                      <li><NavLink to='/dashboard/my-apply-list' onClick={hideLink} className='flex items-center gap-2 p-2'> <RiMessage2Fill /> My Apply List</NavLink> </li>

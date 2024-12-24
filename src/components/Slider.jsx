@@ -33,7 +33,7 @@ const Slider = () => {
          <div className="carousel w-full scroll-smooth cursor-pointer">
             {
                sliders?.map((slider, index) => {
-                  return <div onClick={() => navigate(`/campaigns/${slider._id}`)} key={slider._id} id={`item${index + 1}`} className="carousel-item w-full h-[500px]  bg-center bg-cover " style={{ backgroundImage: `url(${slider.coverPhotoURL})` }}>
+                  return <div onClick={() => navigate(`/campaigns/${slider._id}`)} key={slider._id} id={`item${index + 1}`} className="carousel-item w-full h-[500px]  bg-center bg-cover " style={{ backgroundImage: `url(${slider?.coverPhotoURL})` }}>
                      <div className="w-full h-full bg-white/70 flex flex-col items-center justify-center gap-5">
                         <div className="text-center max-w-[900px] px-3 space-y-5">
                            <h1 className="text-3xl sm:text-4xl font-bold">{slider.title}</h1>
