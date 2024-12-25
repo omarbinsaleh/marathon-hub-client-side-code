@@ -37,8 +37,15 @@ const UpdateMarathon = () => {
       e.preventDefault();
 
       const formData = {
-         ...marathonDetails,
-         registrationCount: data.registrationCount,
+         title: marathonDetails.title,
+         coverPhotoURL: marathonDetails.coverPhotoURL,
+         startRegistrationDate: marathonDetails.startRegistrationDate,
+         endRegistrationDate: marathonDetails.endRegistrationDate,
+         marathonStartDate: marathonDetails.marathonStartDate,
+         location: marathonDetails.location,
+         runningDistance: marathonDetails.runningDistance,
+         description: marathonDetails.description,
+         registrationCount: marathonDetails.registrationCount,
          userInfo: {
             name: user?.displayName,
             email: user?.email,
@@ -46,7 +53,19 @@ const UpdateMarathon = () => {
          }
       }
 
+      console.log(formData);
       // Send data to backend
+      try {
+         const { data } = await axios.put(`${import.meta.env.VITE_API}/marathons/update/${marathonId}`, formData);
+         console.log(data);
+         if(data.modifiedCount) {
+            toast.success("Data updated successfully!")
+            navigate('/dashboard/my-marathons-list')
+         }
+      } catch (error) {
+         console.log(error.message);
+         toast.error("Something went wrong!!")
+      }
 
    };
 
