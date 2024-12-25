@@ -31,10 +31,10 @@ const MarathonDetails = () => {
    }, [marathonId])
 
 
+   // when the data being loaded:
    if (loading) {
       return <Spinner></Spinner>
    }
-
 
    return (
       <section className="py-10 bg-gray-50 dark:bg-gray-800">

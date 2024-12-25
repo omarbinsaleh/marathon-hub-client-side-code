@@ -6,8 +6,10 @@ import { AuthContext } from "../providers/AuthProvider";
 import {format} from 'date-fns';
 import Spinner from "../components/Spinner";
 import EmptyMarathonList from "../components/EmptyMarathonList";
+import { useNavigate } from "react-router-dom";
 
 const MyMarathonList = () => {
+  const navigate = useNavigate();
   const {user} = useContext(AuthContext);
   const [marathons, setMarathons] = useState([])
   const [loading, setLoading] = useState(true);
@@ -34,6 +36,7 @@ const MyMarathonList = () => {
   const handleEdit = (id) => {
     console.log("Edit Marathon:", id);
     // Navigate to the edit page or handle editing logic here
+    navigate(`/dashboard/my-marathons-list/update/${id}`)
   };
 
   const handleDelete = (id) => {
