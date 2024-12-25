@@ -79,7 +79,7 @@ const MarathonDetails = () => {
                      <button
                         disabled={!isRegistrationOpen}
                         onClick={() => navigate(`/register/${marathon.id}`)}
-                        className="px-6 btn btn-block max-w-sm hover:ring-2 ring-blue-900 ring-offset-2 uppercase py-3 bg-blue-900 text-white font-medium rounded-sm hover:bg-blue-800 dark:bg-blue-600 dark:hover:bg-blue-700 transition"
+                        className="px-6 btn btn-block max-w-sm hover:ring-2 ring-blue-900 ring-offset-2 uppercase py-3 bg-blue-900 text-white font-medium rounded-sm hover:bg-blue-800 dark:bg-blue-600 dark:hover:bg-blue-700 transition dark:disabled:text-gray-400 dark:disabled:bg-gray-600 disabled:cursor-not-allowed "
                      >
                         {isRegistrationOpen ? 'Register Now' : 'Registration is Currently Closed'}
                      </button>

@@ -45,7 +45,7 @@ const Profile = () => {
                      onChange={handleInputChange}
                      disabled
                      readOnly
-                     className={`input input-bordered w-full cursor-not-allowed ${isEditing ? "" : "bg-gray-200 dark:bg-gray-700"
+                     className={`input input-bordered w-full cursor-not-allowed ${isEditing ? "" : "bg-gray-200 dark:bg-gray-700 rounded-sm"
                         }`}
                   />
                </div>
@@ -58,7 +58,7 @@ const Profile = () => {
                      onChange={handleInputChange}
                      disabled
                      readOnly
-                     className={`input input-bordered w-full cursor-not-allowed ${isEditing ? "" : "bg-gray-200 dark:bg-gray-700"
+                     className={`input input-bordered w-full cursor-not-allowed ${isEditing ? "" : "bg-gray-200 dark:bg-gray-700 rounded-sm"
                         }`}
                   />
                </div>
@@ -70,7 +70,7 @@ const Profile = () => {
                      value={userInfo.phone}
                      onChange={handleInputChange}
                      disabled={!isEditing}
-                     className={`input input-bordered w-full ${isEditing ? "" : "bg-gray-200 dark:bg-gray-700"
+                     className={`input input-bordered w-full ${isEditing ? "" : "bg-gray-200 dark:bg-gray-700 rounded-sm"
                         }`}
                   />
                </div>
@@ -82,7 +82,7 @@ const Profile = () => {
                      value={userInfo.address}
                      onChange={handleInputChange}
                      disabled={!isEditing}
-                     className={`input input-bordered w-full ${isEditing ? "" : "bg-gray-200 dark:bg-gray-700"
+                     className={`input input-bordered w-full ${isEditing ? "" : "bg-gray-200 dark:bg-gray-700 rounded-sm"
                         }`}
                   />
                </div>
