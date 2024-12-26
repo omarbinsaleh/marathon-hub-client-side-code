@@ -40,9 +40,20 @@ const MyMarathonList = () => {
     navigate(`/dashboard/my-marathons-list/update/${id}`)
   };
 
-  const handleDelete = (id) => {
+  const handleDelete = async (id) => {
     console.log("Delete Marathon:", id);
-    // Implement delete functionality here (e.g., API call to remove marathon)
+    // Implement delete functionality
+    try {
+      const {data} = await axios.delete(`${import.meta.env.VITE_API}/marathons/delete/${id}`)
+      console.log(data);
+      if(data.deletedCount === 1) {
+        return toast.success("Data Deleted Successfully!!");
+
+      }
+    } catch (error) {
+      console.log(error.message);
+      toast.error(error.message);
+    }
     
   };
 
