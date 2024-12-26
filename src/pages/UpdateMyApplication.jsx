@@ -6,18 +6,18 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import Spinner from "../components/Spinner";
 
-const MarathonRegister = () => {
+const UpdateMyApplication = () => {
    const navigate = useNavigate();
-   const { marathonId } = useParams();
+   const { applicationId } = useParams();
    const { user } = useContext(AuthContext);
    const [marathon, setMarathon] = useState({})
    const [loading, setLoading] = useState(true);
    const [formData, setFormData] = useState({
       email: user.email,
-      firstName: "",
-      lastName: "",
-      contactNumber: "",
-      additionalInfo: "",
+      firstName: marathon.firstName,
+      lastName: marathon.lastName,
+      contactNumber: marathon.contactNumber ,
+      additionalInfo:  marathon.additionalInfo,
    });
 
    const handleChange = (e) => {
@@ -32,24 +32,24 @@ const MarathonRegister = () => {
       e.preventDefault();
 
       // Make API Call
-      const registrationDetails = {
+      const updatedData = {
          ...formData,
-         marathonId,
-         marathonTitle: marathon.title,
+         marathonId: marathon.marathonId,
+         marathonTitle: marathon.marathonTitle,
          marathonStartDate: marathon.marathonStartDate,
          marathonLocation: marathon.location,
          runningDistance: marathon.runningDistance
       };
 
-      if (user?.email === marathon?.userInfo.email) {
+      if (user?.email !== marathon?.email) {
          return toast.error("You are not allowed to apply in your own Marathon Event")
       }
 
       // make a post request and save data to the database and increment registration count
       try {
-         const { data } = await axios.post(`${import.meta.env.VITE_API}/marathon-registrations`, registrationDetails);
-         if (data.insertedId) {
-            toast.success("Registration Done Successfully!!");
+         const {data} = await axios.put(`${import.meta.env.VITE_API}/marathon-registrations/update/${applicationId}`, updatedData);
+         if(data.modifiedCount) {
+            toast.success("Registration Data Updated Successfully!!");
             navigate('/dashboard/my-apply-list')
          }
       } catch (error) {
@@ -62,29 +62,32 @@ const MarathonRegister = () => {
    useEffect(() => {
       const fetchMarathonData = async (id) => {
          try {
-            const { data } = await axios.get(`${import.meta.env.VITE_API}/marathons?id=${id}`);
-            const finalData = data[0];
-            setMarathon(finalData);
-            setLoading(false);
+            const {data} = await axios.get(`${import.meta.env.VITE_API}/marathon-registrations/${id}`);
+         setMarathon(data);
+         setLoading(false);
+         console.log(data);
          } catch (error) {
             console.log(error.message);
             toast.error("Something went wrong!!")
          }
       }
 
-      fetchMarathonData(marathonId);
-   }, [marathonId])
+
+      fetchMarathonData(applicationId);
+   }, [applicationId])
 
 
-   if (loading) {
+   if(loading) {
       return <Spinner></Spinner>
    }
+
+   console.log("MarathonData -->", marathon)
 
    return (
       <section className="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-gray-800 py-10 px-4">
          <div className="w-full max-w-lg bg-white dark:bg-gray-700 rounded-lg shadow-lg p-8">
             <h2 className="text-2xl font-bold text-gray-800 dark:text-gray-100 text-center mb-4">
-               Register for {marathon.title}
+               Register for {marathon.marathonTitle}
             </h2>
             <form onSubmit={handleRegister} className="space-y-4">
                {/* Email */}
@@ -106,7 +109,7 @@ const MarathonRegister = () => {
                   <label className="block text-gray-600 dark:text-gray-300 mb-1">Marathon Title</label>
                   <input
                      type="text"
-                     value={marathon.title}
+                     value={marathon.marathonTitle}
                      readOnly
                      className="w-full p-2 border rounded-md bg-gray-100 dark:bg-gray-600 text-gray-600 dark:text-gray-300"
                   />
@@ -131,6 +134,7 @@ const MarathonRegister = () => {
                      type="text"
                      name="firstName"
                      value={formData.firstName}
+                     defaultValue={marathon.firstName}
                      onChange={handleChange}
                      placeholder="Enter your first name"
                      className="w-full p-2 border rounded-md bg-gray-50 dark:bg-gray-600 text-gray-600 dark:text-gray-300"
@@ -144,6 +148,7 @@ const MarathonRegister = () => {
                      type="text"
                      name="lastName"
                      value={formData.lastName}
+                     defaultValue={marathon.lastName}
                      onChange={handleChange}
                      placeholder="Enter your last name"
                      className="w-full p-2 border rounded-md bg-gray-50 dark:bg-gray-600 text-gray-600 dark:text-gray-300"
@@ -159,6 +164,7 @@ const MarathonRegister = () => {
                         type="text"
                         name="contactNumber"
                         value={formData.contactNumber}
+                        defaultValue={marathon.contactNumber}
                         onChange={handleChange}
                         placeholder="Enter your contact number"
                         className="pl-10 w-full p-2 border rounded-md bg-gray-50 dark:bg-gray-600 text-gray-600 dark:text-gray-300"
@@ -184,7 +190,7 @@ const MarathonRegister = () => {
                      type="submit"
                      className="w-full py-2 bg-blue-900 text-white rounded-md hover:bg-blue-800 dark:hover:bg-blue-700 transition"
                   >
-                     Register
+                     Update
                   </button>
                </div>
             </form>
@@ -193,4 +199,4 @@ const MarathonRegister = () => {
    );
 };
 
-export default MarathonRegister;
+export default UpdateMyApplication;
