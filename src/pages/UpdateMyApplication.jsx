@@ -16,8 +16,8 @@ const UpdateMyApplication = () => {
       email: user.email,
       firstName: marathon.firstName,
       lastName: marathon.lastName,
-      contactNumber: marathon.contactNumber ,
-      additionalInfo:  marathon.additionalInfo,
+      contactNumber: marathon.contactNumber,
+      additionalInfo: marathon.additionalInfo,
    });
 
    const handleChange = (e) => {
@@ -47,10 +47,11 @@ const UpdateMyApplication = () => {
 
       // make a post request and save data to the database and increment registration count
       try {
-         const {data} = await axios.put(`${import.meta.env.VITE_API}/marathon-registrations/update/${applicationId}`, updatedData);
-         if(data.modifiedCount) {
+         const { data } = await axios.put(`${import.meta.env.VITE_API}/marathon-registrations/update/${applicationId}`, updatedData);
+         console.log(data);
+         if (data.modifiedCount) {
             toast.success("Registration Data Updated Successfully!!");
-            navigate('/dashboard/my-apply-list')
+            navigate('/dashboard/my-apply-list');
          }
       } catch (error) {
          console.log(error.message);
@@ -62,10 +63,10 @@ const UpdateMyApplication = () => {
    useEffect(() => {
       const fetchMarathonData = async (id) => {
          try {
-            const {data} = await axios.get(`${import.meta.env.VITE_API}/marathon-registrations/${id}`);
-         setMarathon(data);
-         setLoading(false);
-         console.log(data);
+            const { data } = await axios.get(`${import.meta.env.VITE_API}/marathon-registrations/${id}`);
+            setMarathon(data);
+            setLoading(false);
+            console.log(data);
          } catch (error) {
             console.log(error.message);
             toast.error("Something went wrong!!")
@@ -77,7 +78,7 @@ const UpdateMyApplication = () => {
    }, [applicationId])
 
 
-   if(loading) {
+   if (loading) {
       return <Spinner></Spinner>
    }
 
@@ -185,12 +186,19 @@ const UpdateMyApplication = () => {
                   />
                </div>
                {/* Submit Button */}
-               <div>
+               <div className="text-center md:text-left flex items-center gap-5">
                   <button
                      type="submit"
-                     className="w-full py-2 bg-blue-900 text-white rounded-md hover:bg-blue-800 dark:hover:bg-blue-700 transition"
+                     className="btn py-2 bg-blue-900 text-white rounded-md hover:bg-blue-800 dark:hover:bg-blue-700 transition"
                   >
                      Update
+                  </button>
+                  <button
+                  type="button"
+                     onClick={() => navigate('/dashboard/my-apply-list')}
+                     className="btn btn-primary max-w-full md:w-auto bg-green-900 border-green-700 text-white rounded-md"
+                  >
+                     Cancel
                   </button>
                </div>
             </form>

@@ -2,36 +2,35 @@ import axios from "axios";
 import React, { useContext, useEffect, useState } from "react";
 import { FaEdit, FaTrash } from "react-icons/fa";
 // import { toast } from "react-toastify";
-import {toast} from 'react-hot-toast';
+import { toast } from 'react-hot-toast';
 import { AuthContext } from "../providers/AuthProvider";
-import {format} from 'date-fns';
+import { format } from 'date-fns';
 import Spinner from "../components/Spinner";
 import EmptyMarathonList from "../components/EmptyMarathonList";
 import { useNavigate } from "react-router-dom";
 
 const MyMarathonList = () => {
   const navigate = useNavigate();
-  const {user} = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
   const [marathons, setMarathons] = useState([])
   const [loading, setLoading] = useState(true);
 
   // Sample data to simulate marathons created by the user
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        setLoading(true);
-        const { data } = await axios.get(`${import.meta.env.VITE_API}/marathons/${user?.email}`);
-        console.log(data);
-        setMarathons(data);
-      } catch (error) {
-        toast.error("Somethin went wrong!!");
-        console.log(error.message);
-      }finally {
-        setLoading(false)
-      }
+  const fetchData = async (userEmail) => {
+    try {
+      setLoading(true);
+      const { data } = await axios.get(`${import.meta.env.VITE_API}/marathons/${userEmail}`);
+      console.log(data);
+      setMarathons(data);
+    } catch (error) {
+      toast.error("Somethin went wrong!!");
+      console.log(error.message);
+    } finally {
+      setLoading(false)
     }
-
-    fetchData();
+  }
+  useEffect(() => {
+    fetchData(user?.email);
   }, [user.email])
 
   const handleEdit = (id) => {
@@ -42,19 +41,24 @@ const MyMarathonList = () => {
 
   const handleDelete = async (id) => {
     console.log("Delete Marathon:", id);
-    // Implement delete functionality
-    try {
-      const {data} = await axios.delete(`${import.meta.env.VITE_API}/marathons/delete/${id}`)
-      console.log(data);
-      if(data.deletedCount === 1) {
-        return toast.success("Data Deleted Successfully!!");
 
+    const confirmed = confirm("Are you sure to Delete");
+
+    if (confirmed) {
+      // Implement delete functionality
+      try {
+        const { data } = await axios.delete(`${import.meta.env.VITE_API}/marathons/delete/${id}`)
+        console.log(data);
+        if (data.deletedCount === 1) {
+          fetchData(user?.email);
+          return toast.success("Data Deleted Successfully!!");
+
+        }
+      } catch (error) {
+        console.log(error.message);
+        toast.error("Something went wrong!!");
       }
-    } catch (error) {
-      console.log(error.message);
-      toast.error(error.message);
     }
-    
   };
 
   // if loading is true, render the spinner
