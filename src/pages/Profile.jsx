@@ -8,8 +8,8 @@ const Profile = () => {
    const [userInfo, setUserInfo] = useState({
       name: user?.displayName,
       email: user?.email,
-      phone: "+123456789",
-      address: "123 Marathon Street, Cityville",
+      phone: user.auth.currentUser.phoneNumber,
+      address: "",
    });
 
    const handleInputChange = (e) => {
@@ -69,6 +69,7 @@ const Profile = () => {
                      name="phone"
                      value={userInfo.phone}
                      onChange={handleInputChange}
+                     placeholder={userInfo.phone || "N/A" }
                      disabled={!isEditing}
                      className={`input input-bordered w-full ${isEditing ? "" : "bg-gray-200 dark:bg-gray-700 rounded-sm"
                         }`}
@@ -81,6 +82,7 @@ const Profile = () => {
                      name="address"
                      value={userInfo.address}
                      onChange={handleInputChange}
+                     placeholder={userInfo.address || "N/A"}
                      disabled={!isEditing}
                      className={`input input-bordered w-full ${isEditing ? "" : "bg-gray-200 dark:bg-gray-700 rounded-sm"
                         }`}

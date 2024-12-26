@@ -42,17 +42,23 @@ const MyApplyList = () => {
 
   const handleDelete = async (id) => {
     console.log("Delete Marathon:", id);
-    // Implement delete functionality 
-    try {
-      const { data } = await axios.delete(`${import.meta.env.VITE_API}/marathon-registrations/delete/${id}`);
-      if (data.deletedCount === 1) {
-        toast.success("Application deleted successfully!!");
-        fetchData(user?.email);
+
+    const confirmed = confirm("Are You Sure? You can not reverse this action")
+    if(confirmed) {
+      // Implement delete functionality 
+      try {
+        const { data } = await axios.delete(`${import.meta.env.VITE_API}/marathon-registrations/delete/${id}`);
+        if (data.deletedCount === 1) {
+          toast.success("Application deleted successfully!!");
+          fetchData(user?.email);
+        }
+      } catch (error) {
+        console.log(error.message);
+        toast.error("Something went wrong!");
       }
-    } catch (error) {
-      console.log(error.message);
-      toast.error("Something went wrong!");
     }
+    
+    
 
   };
 

@@ -42,7 +42,7 @@ const MyMarathonList = () => {
   const handleDelete = async (id) => {
     console.log("Delete Marathon:", id);
 
-    const confirmed = confirm("Are you sure to Delete");
+    const confirmed = confirm("Are you sure to Delete.\nYou can not reverse this action");
 
     if (confirmed) {
       // Implement delete functionality
