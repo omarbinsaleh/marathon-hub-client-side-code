@@ -15,8 +15,8 @@ const MyApplyList = () => {
   const [applications, setApplications] = useState([])
   const [loading, setLoading] = useState(true);
 
-  // Sample data to simulate marathons created by the user
-  const fetchData = async (userEmail) => {
+  // fetch applications data from the server [for logedin user]
+  const fetchApplications = async (userEmail) => {
     try {
       setLoading(true);
       console.log(user?.email);
@@ -31,7 +31,7 @@ const MyApplyList = () => {
     }
   }
   useEffect(() => {
-    fetchData(user?.email);
+    fetchApplications(user?.email);
   }, [user.email])
 
   const handleEdit = (id) => {
@@ -44,7 +44,7 @@ const MyApplyList = () => {
     console.log("Delete Marathon:", id);
 
     const confirmed = confirm("Are You Sure? You can not reverse this action")
-    if(confirmed) {
+    if (confirmed) {
       // Implement delete functionality 
       try {
         const { data } = await axios.delete(`${import.meta.env.VITE_API}/marathon-registrations/delete/${id}`);
@@ -57,8 +57,8 @@ const MyApplyList = () => {
         toast.error("Something went wrong!");
       }
     }
-    
-    
+
+
 
   };
 
