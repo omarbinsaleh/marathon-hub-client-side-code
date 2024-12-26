@@ -2,37 +2,36 @@ import axios from "axios";
 import React, { useContext, useEffect, useState } from "react";
 import { FaEdit, FaTrash } from "react-icons/fa";
 // import { toast } from "react-toastify";
-import {toast} from 'react-hot-toast';
+import { toast } from 'react-hot-toast';
 import { AuthContext } from "../providers/AuthProvider";
-import {format} from 'date-fns';
+import { format } from 'date-fns';
 import Spinner from "../components/Spinner";
 import { useNavigate } from "react-router-dom";
 import EmptyApplicationList from "../components/EmptyApplicationList";
 
 const MyApplyList = () => {
   const navigate = useNavigate();
-  const {user} = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
   const [applications, setApplications] = useState([])
   const [loading, setLoading] = useState(true);
 
   // Sample data to simulate marathons created by the user
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        setLoading(true);
-        console.log(user?.email);
-        const { data } = await axios.get(`${import.meta.env.VITE_API}/marathon-registration/${user?.email}`);
-        console.log(data);
-        setApplications(data);
-      } catch (error) {
-        toast.error("Somethin went wrong!!");
-        console.log(error.message);
-      }finally {
-        setLoading(false)
-      }
+  const fetchData = async (userEmail) => {
+    try {
+      setLoading(true);
+      console.log(user?.email);
+      const { data } = await axios.get(`${import.meta.env.VITE_API}/marathon-registration/${userEmail}`);
+      console.log(data);
+      setApplications(data);
+    } catch (error) {
+      toast.error("Somethin went wrong!!");
+      console.log(error.message);
+    } finally {
+      setLoading(false)
     }
-
-    fetchData();
+  }
+  useEffect(() => {
+    fetchData(user?.email);
   }, [user.email])
 
   const handleEdit = (id) => {
@@ -41,10 +40,20 @@ const MyApplyList = () => {
     navigate(`/dashboard/my-applications/update/${id}`)
   };
 
-  const handleDelete = (id) => {
+  const handleDelete = async (id) => {
     console.log("Delete Marathon:", id);
-    // Implement delete functionality here (e.g., API call to remove marathon)
-    
+    // Implement delete functionality 
+    try {
+      const { data } = await axios.delete(`${import.meta.env.VITE_API}/marathon-registrations/delete/${id}`);
+      if (data.deletedCount === 1) {
+        toast.success("Application deleted successfully!!");
+        fetchData(user?.email);
+      }
+    } catch (error) {
+      console.log(error.message);
+      toast.error("Something went wrong!");
+    }
+
   };
 
   // if loading is true, render the spinner
@@ -75,7 +84,7 @@ const MyApplyList = () => {
                     <td className="p-4">{index + 1}</td>
                     <td className="p-4">{application?.marathonTitle}</td>
                     <td className="p-4">{format(new Date(application?.marathonStartDate), 'P')}</td>
-                    
+
                     <td className="p-4">{application?.marathonLocation}</td>
                     <td className="p-4">{application?.runningDistance}</td>
                     <td className="p-4">

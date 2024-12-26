@@ -166,7 +166,7 @@ const AddMarathon = () => {
             name="runningDistance"
             value={marathonDetails.runningDistance}
             onChange={handleInputChange}
-            className="select select-bordered w-full rounded-md"
+            className="select select-bordered w-full rounded-md dark:text-black"
             required
           >
             <option value="">Select Distance</option>
