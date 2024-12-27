@@ -14,7 +14,7 @@ const ThemeToggle = ({classList}) => {
    return (
       <button
          onClick={handleThemeToggle}
-         className={`p-3 rounded-full focus:outline-none transition-all duration-300 bg-gray-200 dark:bg-gray-800 shadow-md hover:shadow-lg dark-light-mood`}
+         className={`p-3 rounded-xl focus:outline-none transition-all duration-300 bg-gray-200/40 dark:bg-gray-800/20 shadow-md hover:shadow-lg dark-light-mood`}
          aria-label="Toggle Theme"
       >
          {!darkMood ? (

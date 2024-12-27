@@ -4,6 +4,7 @@ import { FaHome, FaPlus, FaUser, FaSun, FaMoon, FaList, FaRunning, FaClipboardLi
 import { MdDashboard } from "react-icons/md";
 import { AuthContext } from "../providers/AuthProvider";
 import { Tooltip } from "react-tooltip";
+import ThemeToggle from "../components/ThemeToggle";
 
 const Dashboard = () => {
   const {darkMood, setDarkMood} = useContext(AuthContext);
@@ -48,13 +49,15 @@ const Dashboard = () => {
         {/* Theme Toggle */}
         <div className="p-4 border-t border-gray-300 dark:border-gray-700 flex justify-between items-center">
           <span>Theme</span>
-          <button
+          {/* <button
             onClick={toggleTheme}
             className="btn text-2xl w-[50px] h-[50px] px-0 btn-ghost dark-light-mood rounded-full"
             aria-label="Toggle Dark Mode"
           >
             {darkMood ?<FaSun className="text-yellow-500" /> :<FaMoon className="text-blue-400" /> }
-          </button>
+          </button> */}
+
+          <ThemeToggle></ThemeToggle>
 
           <Tooltip
             anchorSelect=".dark-light-mood"
