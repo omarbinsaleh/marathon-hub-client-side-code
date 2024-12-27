@@ -3,30 +3,36 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import Spinner from "../components/Spinner";
+import Search from "../components/Search";
 
 const AllMarathons = () => {
 
-   const [marathons, setMarathons] = useState([]);
-   const [loading, setLoading] = useState(true);
+  const [marathons, setMarathons] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [search, setSearch] = useState('')
 
-   useEffect(() => {
-      const fetchAllMarathons = async () => {
-         try {
-            const {data} = await axios.get(`${import.meta.env.VITE_API}/marathons`);
-            setMarathons(data);
-            setLoading(false);
-         } catch (error) {
-            console.log(error.message);
-            toast.error(error.message);
-         }
+  useEffect(() => {
+    const fetchAllMarathons = async () => {
+      try {
+        const { data } = await axios.get(`${import.meta.env.VITE_API}/marathons?title=${search}`);
+        setMarathons(data);
+        setLoading(false);
+      } catch (error) {
+        console.log(error.message);
+        toast.error(error.message);
       }
+    }
 
-      fetchAllMarathons();
-   }, [])
+    fetchAllMarathons();
+  }, [search])
 
-   if(loading) {
-      return <Spinner></Spinner>
-   }
+  const handleSearch = (e) => {
+    setSearch(e.target.value);
+  }
+
+  if (loading) {
+    return <Spinner></Spinner>
+  }
 
   return (
     <section className="py-10 bg-gray-50 dark:bg-gray-800">
@@ -34,6 +40,9 @@ const AllMarathons = () => {
         <h1 className="text-3xl font-bold text-center text-gray-800 dark:text-gray-100 mb-8">
           All Marathons
         </h1>
+        <div className="mb-4">
+          <Search handleSearch={handleSearch} />
+        </div>
         {marathons.length > 0 ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {marathons?.map((marathon) => (

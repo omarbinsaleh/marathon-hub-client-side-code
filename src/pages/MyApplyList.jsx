@@ -6,21 +6,28 @@ import { toast } from 'react-hot-toast';
 import { AuthContext } from "../providers/AuthProvider";
 import { format } from 'date-fns';
 import Spinner from "../components/Spinner";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import EmptyApplicationList from "../components/EmptyApplicationList";
+import Search from "../components/Search";
 
 const MyApplyList = () => {
   const navigate = useNavigate();
   const { user } = useContext(AuthContext);
   const [applications, setApplications] = useState([])
   const [loading, setLoading] = useState(true);
+  const [search, setSearch] = useState('');
 
   // fetch applications data from the server [for logedin user]
-  const fetchApplications = async (userEmail) => {
+  const fetchApplications = async (userEmail, searchQuery) => {
+
+    if (!searchQuery) {
+      searchQuery = ''
+    }
+
     try {
-      setLoading(true);
+      // setLoading(true);
       console.log(user?.email);
-      const { data } = await axios.get(`${import.meta.env.VITE_API}/marathon-registration/${userEmail}`);
+      const { data } = await axios.get(`${import.meta.env.VITE_API}/marathon-registration/${userEmail}?search=${searchQuery}`);
       console.log(data);
       setApplications(data);
     } catch (error) {
@@ -31,8 +38,12 @@ const MyApplyList = () => {
     }
   }
   useEffect(() => {
-    fetchApplications(user?.email);
-  }, [user.email])
+    fetchApplications(user?.email, search);
+  }, [user.email, search])
+
+  const handleSearch = (e) => {
+    setSearch(e.target.value);
+  }
 
   const handleEdit = (id) => {
     console.log("Edit Marathon:", id);
@@ -57,9 +68,6 @@ const MyApplyList = () => {
         toast.error("Something went wrong!");
       }
     }
-
-
-
   };
 
   // if loading is true, render the spinner
@@ -71,6 +79,9 @@ const MyApplyList = () => {
     <div className="min-h-screen bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100">
       <div className="w-full  mx-auto bg-white dark:bg-gray-800 rounded-md shadow-lg p-6">
         <h2 className="text-2xl font-bold mb-6">My Application</h2>
+        <div className="mb-4">
+          <Search handleSearch={handleSearch} />
+        </div>
         {applications.length > 0 ? (
           <div className="overflow-x-auto w-full">
             <table className="table  w-full">
@@ -88,7 +99,7 @@ const MyApplyList = () => {
                 {applications?.map((application, index) => (
                   <tr key={application._id} className="border-b-2 border-slate-200">
                     <td className="p-4">{index + 1}</td>
-                    <td className="p-4">{application?.marathonTitle}</td>
+                    <td className="p-4"> <Link to={`/marathons/${application.marathonId}`} className="hover:underline">{application?.marathonTitle}</Link> </td>
                     <td className="p-4">{format(new Date(application?.marathonStartDate), 'P')}</td>
 
                     <td className="p-4">{application?.marathonLocation}</td>

@@ -48,6 +48,11 @@ const MarathonRegister = () => {
       // make a post request and save data to the database and increment registration count
       try {
          const { data } = await axios.post(`${import.meta.env.VITE_API}/marathon-registrations`, registrationDetails);
+
+         if (data.message === 'NOT ALLOWED') {
+            return toast.error("You have already applied to this event");
+         }
+
          if (data.insertedId) {
             toast.success("Registration Done Successfully!!");
             navigate('/dashboard/my-apply-list')
