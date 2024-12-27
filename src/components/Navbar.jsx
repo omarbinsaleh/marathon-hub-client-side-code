@@ -6,7 +6,6 @@ import { IoIosContact, IoIosSearch } from 'react-icons/io';
 import { MdDashboard, MdDesignServices } from 'react-icons/md';
 import { IoNewspaper } from 'react-icons/io5';
 import { RiMessage2Fill } from 'react-icons/ri';
-import logo from '../assets/newLogo2.png';
 import newLogo from '../assets/logo.png';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { VscSignIn, VscSignOut } from 'react-icons/vsc';

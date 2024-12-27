@@ -1,16 +1,19 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Outlet, Link, NavLink } from "react-router-dom";
 import { FaHome, FaPlus, FaUser, FaSun, FaMoon, FaList, FaRunning, FaClipboardList, FaFlagCheckered } from "react-icons/fa";
 import { MdDashboard } from "react-icons/md";
+import { AuthContext } from "../providers/AuthProvider";
+import { Tooltip } from "react-tooltip";
 
 const Dashboard = () => {
+  const {darkMood, setDarkMood} = useContext(AuthContext);
+
   const toggleTheme = () => {
-    const rootElement = document.documentElement;
-    if (rootElement.classList.contains("dark")) {
-      rootElement.classList.remove("dark");
+    if (darkMood) {
+      setDarkMood(false)
       localStorage.setItem("theme", "light");
     } else {
-      rootElement.classList.add("dark");
+      setDarkMood(true);
       localStorage.setItem("theme", "dark");
     }
   };
@@ -47,12 +50,16 @@ const Dashboard = () => {
           <span>Theme</span>
           <button
             onClick={toggleTheme}
-            className="btn btn-sm btn-ghost"
+            className="btn text-2xl w-[50px] h-[50px] px-0 btn-ghost dark-light-mood rounded-full"
             aria-label="Toggle Dark Mode"
           >
-            <FaSun className="text-yellow-500 dark:hidden" />
-            <FaMoon className="hidden dark:inline text-blue-400" />
+            {darkMood ?<FaSun className="text-yellow-500" /> :<FaMoon className="text-blue-400" /> }
           </button>
+
+          <Tooltip
+            anchorSelect=".dark-light-mood"
+            content={!darkMood ? "Dark Mood" : "Light Mood"}
+         />
         </div>
       </div>
 

@@ -3,7 +3,7 @@ import { FaMoon, FaSun } from "react-icons/fa";
 import { AuthContext } from "../providers/AuthProvider";
 import { Tooltip } from "react-tooltip";
 
-const ThemeToggle = () => {
+const ThemeToggle = ({classList}) => {
    const { darkMood, setDarkMood } = useContext(AuthContext);
 
    function handleThemeToggle() {
@@ -14,7 +14,7 @@ const ThemeToggle = () => {
    return (
       <button
          onClick={handleThemeToggle}
-         className="p-3 rounded-full focus:outline-none transition-all duration-300 bg-gray-200 dark:bg-gray-800 shadow-md hover:shadow-lg dark-light-mood"
+         className={`p-3 rounded-full focus:outline-none transition-all duration-300 bg-gray-200 dark:bg-gray-800 shadow-md hover:shadow-lg dark-light-mood`}
          aria-label="Toggle Theme"
       >
          {!darkMood ? (

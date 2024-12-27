@@ -7,6 +7,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { AuthContext } from "../providers/AuthProvider";
 
 const AddMarathon = () => {
+  // DECLARE COMPONENT STATES
   const { user } = useContext(AuthContext);
   const [marathonDetails, setMarathonDetails] = useState({
     title: "",
@@ -19,15 +20,18 @@ const AddMarathon = () => {
     description: "",
   });
 
+  // HANDLE INPUT CHANGE EVENT
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setMarathonDetails({ ...marathonDetails, [name]: value });
   };
 
+  // FUNCTION TO HANDLE DATE INPUT PROVIDED BY USERS
   const handleDateChange = (name, date) => {
     setMarathonDetails({ ...marathonDetails, [name]: date });
   };
 
+  // FUNCTION TO HANDLE THE FORM SUBMISSION
   const handleSubmit = async (e) => {
     e.preventDefault();
 

@@ -78,10 +78,15 @@ const MyApplyList = () => {
   return (
     <div className="min-h-screen bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100">
       <div className="w-full  mx-auto bg-white dark:bg-gray-800 rounded-md shadow-lg p-6">
-        <h2 className="text-2xl font-bold mb-6">My Application</h2>
-        <div className="mb-4">
-          <Search handleSearch={handleSearch} />
-        </div>
+
+        <header className="mb-8 flex flex-wrap items-center justify-between gap-3">
+          <div className="flex items-center">
+            <h2 className="text-3xl font-bold text-center">My Application</h2>
+          </div>
+          <div className="flex items-center flex-1 justify-center md:justify-end">
+            <Search handleSearch={handleSearch} />
+          </div>
+        </header>
         {applications.length > 0 ? (
           <div className="overflow-x-auto w-full">
             <table className="table  w-full">

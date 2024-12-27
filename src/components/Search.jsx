@@ -2,8 +2,8 @@ import React from 'react'
 
 const Search = ({handleSearch}) => {
    return (
-      <div>
-         <label className="input input-bordered flex items-center gap-2 max-w-sm">
+      <div className='flex w-full md:justify-center lg:justify-end'>
+         <label className="input input-bordered flex items-center gap-2 w-full max-w-sm  rounded-md">
             <input onChange={handleSearch} type="text" className="grow" placeholder="Search" />
             <svg
                xmlns="http://www.w3.org/2000/svg"

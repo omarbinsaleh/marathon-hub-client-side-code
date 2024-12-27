@@ -40,13 +40,13 @@ const AllMarathons = () => {
     <section className="py-10 bg-gray-50 dark:bg-gray-800">
       <div className="container mx-auto px-4">
         {/* header section */}
-        <header className="mb-8 flex items-center flex-wrap justify-between">
+        <header className="mb-8 flex items-center flex-wrap justify-between gap-3">
           <div>
             <h1 className="text-3xl font-bold  text-gray-800 dark:text-gray-100">
               All Marathons
             </h1>
           </div>
-          <div>
+          <div className="flex-1">
             <Search handleSearch={handleSearch} />
           </div>
         </header>
