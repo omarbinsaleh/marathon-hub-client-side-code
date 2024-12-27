@@ -5,6 +5,7 @@ import { FaMapMarkerAlt, FaCalendarAlt, FaRunning } from "react-icons/fa";
 import axios from "axios";
 import { toast } from "react-toastify";
 import Spinner from "../components/Spinner";
+import CountDownTimer from "../components/CountDownTimer";
 
 const MarathonDetails = () => {
    const { marathonId } = useParams();
@@ -74,8 +75,10 @@ const MarathonDetails = () => {
                   <p className="text-sm text-gray-800 dark:text-gray-200 mt-4">
                      {marathon?.description}
                   </p>
-                  <div className="mt-6">
-
+                  <div className="mt-6 space-y-5">
+                     <div className="flex items-center text-xl gap-5">
+                       <CountDownTimer targetDate={marathon?.endRegistrationDate} />
+                     </div>
                      <button
                         disabled={!isRegistrationOpen}
                         onClick={() => navigate(`/marathons/register/${marathon._id}`)}
