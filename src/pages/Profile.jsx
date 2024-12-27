@@ -13,7 +13,7 @@ const Profile = () => {
    });
 
    // UPDATE THE PAGE TITLE:
-   document.title = "Marathon Hub | Profile";
+   document.title = "Profile | Marathon Hub";
 
    const handleInputChange = (e) => {
       const { name, value } = e.target;

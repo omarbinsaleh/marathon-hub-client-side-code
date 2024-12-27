@@ -10,7 +10,7 @@ const Dashboard = () => {
   const {darkMood, setDarkMood} = useContext(AuthContext);
 
   // UPDATE THE PAGE TITLE:
-  document.title = "Marathon Hub | Dashbaord";
+  document.title = "Dashbaord | Marathon Hub";
 
   const toggleTheme = () => {
     if (darkMood) {

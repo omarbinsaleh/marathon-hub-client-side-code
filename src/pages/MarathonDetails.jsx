@@ -15,7 +15,7 @@ const MarathonDetails = () => {
    const [isRegistrationOpen, setIsRegistrationOpen] = useState(true);
 
    // UPDATE PAGE TITLE:
-   document.title = "Marathon Hub | Marathon Details";
+   document.title = "Marathon Details | Marathon Hub";
 
    useEffect(() => {
       const fetchSingleMarathon = async (id) => {

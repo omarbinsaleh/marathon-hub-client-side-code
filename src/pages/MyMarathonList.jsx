@@ -16,7 +16,7 @@ const MyMarathonList = () => {
   const [loading, setLoading] = useState(true);
 
   // UPDATE THE PAGE TITLE:
-  document.title = "Marathon Hub | My Marathons";
+  document.title = "My Marathons | Marathon Hub";
 
   // Sample data to simulate marathons created by the user
   const fetchData = async (userEmail) => {

@@ -12,7 +12,7 @@ const AllMarathons = () => {
   const [search, setSearch] = useState('')
 
   // UPDATE THE PAGE TITLE
-  document.title = "Marathon Hub | All Marathons Events";
+  document.title = "All Marathons Events | Marathon Hub";
 
   useEffect(() => {
     const fetchAllMarathons = async (searchQuery='') => {

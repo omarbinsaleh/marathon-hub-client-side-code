@@ -21,7 +21,7 @@ const MarathonRegister = () => {
    });
 
    // UPDATE THE PAGE TITLE:
-   document.title = "Marathon Hub | Marathon Registration";
+   document.title = "Marathon Registration | Marathon Hub";
 
    const handleChange = (e) => {
       const { name, value } = e.target;

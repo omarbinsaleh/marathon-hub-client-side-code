@@ -21,7 +21,7 @@ const UpdateMyApplication = () => {
    });
 
    // UPDATE THE PAGE TITLE: 
-   document.title = "Marathon Hub | Update Application";
+   document.title = "Update Application | Marathon Hub";
 
    const handleChange = (e) => {
       const { name, value } = e.target;

@@ -21,7 +21,7 @@ const AddMarathon = () => {
   });
 
   // UPDATE PAGE TIELE:
-  document.title = "Marathon Hub | Add Marathon";
+  document.title = "Add Marathon | Marathon Hub";
 
   // HANDLE INPUT CHANGE EVENT
   const handleInputChange = (e) => {

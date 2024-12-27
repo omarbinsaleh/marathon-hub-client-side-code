@@ -18,7 +18,7 @@ const MyApplyList = () => {
   const [search, setSearch] = useState('');
 
   // UPDATE THE PAGE TITLE:
-  document.title = "Marathon Hub | My Applications";
+  document.title = "My Applications | Marathon Hub";
 
   // fetch applications data from the server [for logedin user]
   const fetchApplications = async (userEmail, searchQuery) => {
