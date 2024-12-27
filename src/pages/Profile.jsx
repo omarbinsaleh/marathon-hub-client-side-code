@@ -12,6 +12,9 @@ const Profile = () => {
       address: "",
    });
 
+   // UPDATE THE PAGE TITLE:
+   document.title = "Marathon Hub | Profile";
+
    const handleInputChange = (e) => {
       const { name, value } = e.target;
       setUserInfo((prev) => ({ ...prev, [name]: value }));

@@ -20,6 +20,9 @@ const UpdateMyApplication = () => {
       additionalInfo: marathon.additionalInfo,
    });
 
+   // UPDATE THE PAGE TITLE: 
+   document.title = "Marathon Hub | Update Application";
+
    const handleChange = (e) => {
       const { name, value } = e.target;
       setFormData((prev) => ({

@@ -20,6 +20,9 @@ const MarathonRegister = () => {
       additionalInfo: "",
    });
 
+   // UPDATE THE PAGE TITLE:
+   document.title = "Marathon Hub | Marathon Registration";
+
    const handleChange = (e) => {
       const { name, value } = e.target;
       setFormData((prev) => ({

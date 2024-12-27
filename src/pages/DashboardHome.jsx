@@ -7,6 +7,9 @@ const DashboardHome = () => {
 
   const {user} = useContext(AuthContext);
 
+  // UPDATE THE PAGE TITLE:
+  document.title = "Marathon Hub | Dashboard Home";
+
   // Example data
   const userStats = {
     totalMarathons: 5,

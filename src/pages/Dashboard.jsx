@@ -9,6 +9,9 @@ import ThemeToggle from "../components/ThemeToggle";
 const Dashboard = () => {
   const {darkMood, setDarkMood} = useContext(AuthContext);
 
+  // UPDATE THE PAGE TITLE:
+  document.title = "Marathon Hub | Dashbaord";
+
   const toggleTheme = () => {
     if (darkMood) {
       setDarkMood(false)

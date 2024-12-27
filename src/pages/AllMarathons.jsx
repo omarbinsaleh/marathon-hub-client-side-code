@@ -11,6 +11,9 @@ const AllMarathons = () => {
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState('')
 
+  // UPDATE THE PAGE TITLE
+  document.title = "Marathon Hub | All Marathons Events";
+
   useEffect(() => {
     const fetchAllMarathons = async (searchQuery='') => {
       try {

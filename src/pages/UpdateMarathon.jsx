@@ -24,6 +24,9 @@ const UpdateMarathon = () => {
       description: "",
    });
 
+   // UPDATE THE PAGE TITLE:
+   document.title = "Marathon Hub | Update Marathon";
+
    const handleInputChange = (e) => {
       const { name, value } = e.target;
       setMarathonDetails({ ...marathonDetails, [name]: value });
