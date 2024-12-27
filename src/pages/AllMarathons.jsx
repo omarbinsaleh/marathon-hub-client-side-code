@@ -6,15 +6,15 @@ import Spinner from "../components/Spinner";
 import Search from "../components/Search";
 
 const AllMarathons = () => {
-
+  // DECLARE STATES
   const [marathons, setMarathons] = useState([]);
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState('')
 
   useEffect(() => {
-    const fetchAllMarathons = async () => {
+    const fetchAllMarathons = async (searchQuery='') => {
       try {
-        const { data } = await axios.get(`${import.meta.env.VITE_API}/marathons?title=${search}`);
+        const { data } = await axios.get(`${import.meta.env.VITE_API}/marathons?title=${searchQuery}`);
         setMarathons(data);
         setLoading(false);
       } catch (error) {
@@ -23,13 +23,15 @@ const AllMarathons = () => {
       }
     }
 
-    fetchAllMarathons();
+    fetchAllMarathons(search);
   }, [search])
 
+  // FUNCTION TO HANDLE THE SEARCH FUNCTIONALITY
   const handleSearch = (e) => {
     setSearch(e.target.value);
   }
 
+  // REDNDER THE LOADER WHEN FETCHING DATA
   if (loading) {
     return <Spinner></Spinner>
   }
@@ -37,31 +39,42 @@ const AllMarathons = () => {
   return (
     <section className="py-10 bg-gray-50 dark:bg-gray-800">
       <div className="container mx-auto px-4">
-        <h1 className="text-3xl font-bold text-center text-gray-800 dark:text-gray-100 mb-8">
-          All Marathons
-        </h1>
-        <div className="mb-4">
-          <Search handleSearch={handleSearch} />
-        </div>
+        {/* header section */}
+        <header className="mb-8 flex items-center flex-wrap justify-between">
+          <div>
+            <h1 className="text-3xl font-bold  text-gray-800 dark:text-gray-100">
+              All Marathons
+            </h1>
+          </div>
+          <div>
+            <Search handleSearch={handleSearch} />
+          </div>
+        </header>
+
+        {/* main section */}
         {marathons.length > 0 ? (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <main className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {marathons?.map((marathon) => (
               <div
                 key={marathon._id}
                 className="bg-white dark:bg-gray-700 shadow-lg rounded-sm overflow-hidden transform transition duration-200 hover:scale-105"
               >
+                {/* cover photo */}
                 <img
                   src={marathon.coverPhotoURL}
                   alt={marathon.title}
                   className="w-full h-40 object-cover"
                 />
                 <div className="p-4">
+                  {/* marathon title */}
                   <h2 className="text-lg font-semibold text-gray-800 dark:text-gray-100">
                     {marathon.title}
                   </h2>
+                  {/* marathon location */}
                   <p className="text-sm text-gray-600 dark:text-gray-300 mt-2">
                     📍 {marathon.location}
                   </p>
+                  {/* marathon registration data */}
                   <p className="text-sm text-gray-600 dark:text-gray-300 mt-2">
                     🗓 Registration:{" "}
                     {new Date(
@@ -83,7 +96,7 @@ const AllMarathons = () => {
                 </div>
               </div>
             ))}
-          </div>
+          </main>
         ) : (
           <div className="text-center py-20">
             <p className="text-gray-600 dark:text-gray-300 text-lg">
