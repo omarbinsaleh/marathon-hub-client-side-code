@@ -35,20 +35,23 @@ const CountdownTimer = ({ targetDate }) => {
    }
 
    return (
-      <div className="flex justify-center items-center space-x-4 text-center">
-         {Object.keys(timeLeft).map((interval) => (
-            <div
-               key={interval}
-               className="w-20 p-4 bg-gray-200 dark:bg-gray-700 rounded-lg shadow-lg"
-            >
-               <div className="text-2xl font-bold text-gray-900 dark:text-gray-100">
-                  {timeLeft[interval]}
+      <div>
+         <h1 className="text-lg uppercase font-bold text-red-700">The Event will Start in</h1>
+         <div className="flex justify-start items-center gap-2 text-center">
+            {Object.keys(timeLeft).map((interval) => (
+               <div
+                  key={interval}
+                  className="w-20 p-4 bg-gray-200 dark:bg-gray-700 rounded-lg shadow-lg"
+               >
+                  <div className="text-2xl font-bold text-gray-900 dark:text-gray-100">
+                     {timeLeft[interval]}
+                  </div>
+                  <div className="text-sm text-gray-600 dark:text-gray-300 capitalize">
+                     {interval}
+                  </div>
                </div>
-               <div className="text-sm text-gray-600 dark:text-gray-300 capitalize">
-                  {interval}
-               </div>
-            </div>
-         ))}
+            ))}
+         </div>
       </div>
    );
 };

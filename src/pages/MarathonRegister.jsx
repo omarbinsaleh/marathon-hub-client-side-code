@@ -23,6 +23,7 @@ const MarathonRegister = () => {
    // UPDATE THE PAGE TITLE:
    document.title = "Marathon Registration | Marathon Hub";
 
+   // FUNCTION TO HANDLE THE INPUT FROM THE USER
    const handleChange = (e) => {
       const { name, value } = e.target;
       setFormData((prev) => ({
@@ -31,10 +32,11 @@ const MarathonRegister = () => {
       }));
    };
 
+   // FUNCTION TO HANDLE REGISTRATIONS
    const handleRegister = async (e) => {
       e.preventDefault();
 
-      // Make API Call
+      // CREATE THE REGISTRATION DATA
       const registrationDetails = {
          ...formData,
          marathonId,
@@ -44,29 +46,34 @@ const MarathonRegister = () => {
          runningDistance: marathon.runningDistance
       };
 
+      // PREVENT USER FROM APPLYING TO HIS OR HER EVENT, NOTIFY THE USER THAT THE ACTION IS NOT ALLOWED
       if (user?.email === marathon?.userInfo.email) {
          return toast.error("You are not allowed to apply in your own Marathon Event")
       }
 
-      // make a post request and save data to the database and increment registration count
       try {
+         // MAEK A POST REQUEST AND SAVE THE DATA TO THE DATABASE AND INCREMENT THE TOTAL REGISTRATION COUNT FOR THIS MARATHON EVENT
          const { data } = await axios.post(`${import.meta.env.VITE_API}/marathon-registrations`, registrationDetails);
 
+         // IF USER TRIES TO APPLY MORE THAN ONE TO A PARTICULAR EVENT, NOTIFY THE USER THAT THE ACTIONS IS NOT ALLOWED
          if (data.message === 'NOT ALLOWED') {
             return toast.error("You have already applied to this event");
          }
 
+         // WHEN THE DATA IS SAVED SUCCESSFULLY IN THE DATABASE, DISPLAY A SUCCESS MESSAGE
          if (data.insertedId) {
             toast.success("Registration Done Successfully!!");
             navigate('/dashboard/my-apply-list')
          }
       } catch (error) {
+         // WHEN SOMETHIN GOES WRONG, LOG THE ERROR OBJECT IN THE CONSOLE
          console.log(error.message);
          toast.error("Something went wrong!")
       }
 
    };
 
+   // FETCH ALL OF THE INFORMATION ABOUT THE MARATHON EVENT IN QUESTION
    useEffect(() => {
       const fetchMarathonData = async (id) => {
          try {
@@ -84,6 +91,7 @@ const MarathonRegister = () => {
    }, [marathonId])
 
 
+   // RENDER THE SPINNER, WHEN THE DATA IS BEING LOADED
    if (loading) {
       return <Spinner></Spinner>
    }
@@ -95,7 +103,7 @@ const MarathonRegister = () => {
                Register for {marathon.title}
             </h2>
             <form onSubmit={handleRegister} className="space-y-4">
-               {/* Email */}
+               {/* USER EMAIL */}
                <div>
                   <label className="block text-gray-600 dark:text-gray-300 mb-1">Email</label>
                   <div className="relative">
@@ -109,7 +117,7 @@ const MarathonRegister = () => {
                      />
                   </div>
                </div>
-               {/* Marathon Title */}
+               {/*  MARATHON TITLE */}
                <div>
                   <label className="block text-gray-600 dark:text-gray-300 mb-1">Marathon Title</label>
                   <input
@@ -119,7 +127,7 @@ const MarathonRegister = () => {
                      className="w-full p-2 border rounded-md bg-gray-100 dark:bg-gray-600 text-gray-600 dark:text-gray-300"
                   />
                </div>
-               {/* Marathon Start Date */}
+               {/* MARATHON START DATE */}
                <div>
                   <label className="block text-gray-600 dark:text-gray-300 mb-1">Marathon Start Date</label>
                   <div className="relative">
@@ -132,7 +140,7 @@ const MarathonRegister = () => {
                      />
                   </div>
                </div>
-               {/* First Name */}
+               {/* USER'S FIRST NAME */}
                <div>
                   <label className="block text-gray-600 dark:text-gray-300 mb-1">First Name</label>
                   <input
@@ -145,7 +153,7 @@ const MarathonRegister = () => {
                      required
                   />
                </div>
-               {/* Last Name */}
+               {/* USER'S LAST NAME */}
                <div>
                   <label className="block text-gray-600 dark:text-gray-300 mb-1">Last Name</label>
                   <input
@@ -158,7 +166,7 @@ const MarathonRegister = () => {
                      required
                   />
                </div>
-               {/* Contact Number */}
+               {/* USER'S CONTACT NUMBER */}
                <div>
                   <label className="block text-gray-600 dark:text-gray-300 mb-1">Contact Number</label>
                   <div className="relative">
@@ -174,7 +182,7 @@ const MarathonRegister = () => {
                      />
                   </div>
                </div>
-               {/* Additional Info */}
+               {/* ADDITIONAL INFORMATION THE USER WANT TO PROVIDE */}
                <div>
                   <label className="block text-gray-600 dark:text-gray-300 mb-1">Additional Info</label>
                   <textarea
@@ -186,7 +194,7 @@ const MarathonRegister = () => {
                      className="w-full p-2 border rounded-md bg-gray-50 dark:bg-gray-600 text-gray-600 dark:text-gray-300"
                   />
                </div>
-               {/* Submit Button */}
+               {/* APPLICATION OR REGISTRATION SUBMIT BUTTON */}
                <div>
                   <button
                      type="submit"

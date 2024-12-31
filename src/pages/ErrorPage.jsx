@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 const ErrorPage = () => {
   const navigate = useNavigate();
 
-  // change page title:
+  // CHANGE THE PAGE TITLE:
   document.title = "Not Found Page"
 
   return (

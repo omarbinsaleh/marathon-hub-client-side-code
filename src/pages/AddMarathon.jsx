@@ -48,7 +48,7 @@ const AddMarathon = () => {
       }
     }
 
-    // Send data to backend
+    // SEND THE DATA TO THE BACKEND
     try {
       const { data } = await axios.post(`${import.meta.env.VITE_API}/marathons/add`, formData)
       console.log(data)
@@ -82,7 +82,7 @@ const AddMarathon = () => {
         className="w-full mx-auto bg-white dark:bg-gray-800 shadow-lg rounded-lg p-8 space-y-6"
         encType="multipart/form-data"
       >
-        {/* Marathon Title */}
+        {/* INPUT FIELD: MARATHON TITLE */}
         <div>
           <label className="block text-lg font-medium mb-2">Marathon Title</label>
           <input
@@ -96,7 +96,7 @@ const AddMarathon = () => {
           />
         </div>
 
-        {/* Marathon Cover Photo URL */}
+        {/* INPUT FIELD: MARATHON COVER PHOTO URL */}
         <div>
           <label className="block text-lg font-medium mb-2">Marathon Cover Photo URL</label>
           <input
@@ -110,7 +110,7 @@ const AddMarathon = () => {
           />
         </div>
 
-        {/* Dates */}
+        {/* INPUT FIELD: MARATHON REGISTRATION DATE AND MARATHON START DATE */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <div className="w-full">
             <label className="block text-lg font-medium mb-2">
@@ -152,7 +152,7 @@ const AddMarathon = () => {
           </div>
         </div>
 
-        {/* Location */}
+        {/* INPUT FIELD: MARATHON LOCATION */}
         <div>
           <label className="block text-lg font-medium mb-2">Location</label>
           <input
@@ -166,7 +166,7 @@ const AddMarathon = () => {
           />
         </div>
 
-        {/* Running Distance */}
+        {/* INPUT FIELD: RUNNING DISTANCE */}
         <div>
           <label className="block text-lg font-medium mb-2">Running Distance</label>
           <select
@@ -183,7 +183,7 @@ const AddMarathon = () => {
           </select>
         </div>
 
-        {/* Description */}
+        {/* INPUT FIELD: DESCRIPTION */}
         <div>
           <label className="block text-lg font-medium mb-2">Description</label>
           <textarea
@@ -196,7 +196,7 @@ const AddMarathon = () => {
           />
         </div>
 
-        {/* Submit Button */}
+        {/* SUBMIT BUTTON TO SUBMIT THE FORM DATA */}
         <div className="text-center md:text-left">
           <button
             type="submit"

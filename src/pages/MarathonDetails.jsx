@@ -17,6 +17,7 @@ const MarathonDetails = () => {
    // UPDATE PAGE TITLE:
    document.title = "Marathon Details | Marathon Hub";
 
+   // FETCH THE NECESSARY DATA FROM THE DATABASE
    useEffect(() => {
       const fetchSingleMarathon = async (id) => {
          try {
@@ -35,7 +36,7 @@ const MarathonDetails = () => {
    }, [marathonId])
 
 
-   // when the data being loaded:
+   // RENDER THE SPINNER, WHEN THE DATA IS BEING LOADED:
    if (loading) {
       return <Spinner></Spinner>
    }
@@ -44,43 +45,53 @@ const MarathonDetails = () => {
       <section className="py-10 bg-gray-50 dark:bg-gray-800">
          <div className="container mx-auto px-4">
             <div className="bg-white dark:bg-gray-700 rounded-lg shadow-lg overflow-hidden">
+               {/* MARATHON COVER PHOTO */}
                <img
                   src={marathon?.coverPhotoURL}
                   alt={marathon?.title}
                   className="w-full h-80 object-cover"
                />
                <div className="p-6">
+                  {/* MARATHON TITLE */}
                   <h1 className="text-3xl font-bold text-gray-800 dark:text-gray-100">
                      {marathon?.title}
                   </h1>
+                  {/* MARATHON ORGANIZER */}
                   <p className="text-sm text-gray-600 dark:text-gray-300 mt-2">
                      Organized by: {marathon?.userInfo?.name} ({marathon?.userInfo?.email})
                   </p>
+                  {/* MARATHON LOCATION */}
                   <p className="text-sm text-gray-600 dark:text-gray-300 mt-2 flex items-center gap-2">
                      <FaMapMarkerAlt className="text-blue-500" />
                      Location: {marathon?.location}
                   </p>
+                  {/* MARATHON RUNNING DISTANCE */}
                   <p className="text-sm text-gray-600 dark:text-gray-300 mt-2 flex items-center gap-2">
                      <FaRunning className="text-green-500" />
                      Distance: {marathon?.runningDistance}
                   </p>
+                  {/* MARATHON START DATE */}
                   <p className="text-sm text-gray-600 dark:text-gray-300 mt-2 flex items-center gap-2">
                      <FaCalendarAlt className="text-yellow-500" />
                      Marathon Date: {format(new Date(marathon?.marathonStartDate), "PPP")}
                   </p>
+                  {/* MARATHON REGISTRATION DATE */}
                   <p className="text-sm text-gray-600 dark:text-gray-300 mt-2">
                      Registration: {format(new Date(marathon?.startRegistrationDate), "PPP")} to{" "}
                      {format(new Date(marathon.endRegistrationDate), "PPP")}
                   </p>
+                  {/* TOTAL APPLICATION PLACED FOR THIS EVENT */}
                   <p className="text-sm text-gray-600 dark:text-gray-300 mt-2">
                      Total Registrations: {marathon?.registrationCount}
                   </p>
+                  {/* MARATHON DESCRIPTION */}
                   <p className="text-sm text-gray-800 dark:text-gray-200 mt-4">
                      {marathon?.description}
                   </p>
                   <div className="mt-6 space-y-5">
+                     {/* COUNTDOWN TIMMER */}
                      <div className="flex items-center text-xl gap-5">
-                       <CountDownTimer targetDate={marathon?.endRegistrationDate} />
+                       <CountDownTimer targetDate={marathon?.marathonStartDate} />
                      </div>
                      <button
                         disabled={!isRegistrationOpen}

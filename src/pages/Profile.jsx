@@ -31,8 +31,8 @@ const Profile = () => {
    };
 
    return (
-      <div className="min-h-screen bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100 p-6 ">
-         <div className="max-w-7xl mx-auto bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6">
+      <div className="min-h-screen bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100 ">
+         <div className="max-w-7xl mx-auto bg-white dark:bg-gray-800 rounded-sm shadow-lg p-6">
             <div>
                <img src={user?.photoURL} className="w-[100px] aspect-square rounded-full mx-auto ring-2 ring-offset-2 mb-10" alt="" />
             </div>

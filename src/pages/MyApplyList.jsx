@@ -20,60 +20,72 @@ const MyApplyList = () => {
   // UPDATE THE PAGE TITLE:
   document.title = "My Applications | Marathon Hub";
 
-  // fetch applications data from the server [for logedin user]
+  // FUNCTION: TO FETCH ALL THE NECESSARY DATA FROM THE DATABASE => [SPECIFICALLY CURRENT USER'S APPLICATION DATA]
   const fetchApplications = async (userEmail, searchQuery) => {
 
+    // SET THE DEFAULT VALUE OF THE 'searchQuery', IF IT IS NOT PROVIDED
     if (!searchQuery) {
       searchQuery = ''
     }
 
     try {
-      // setLoading(true);
+      // MAKE A GET REQUEST TO FETCH DATA FROM THE DATABASE
       console.log(user?.email);
       const { data } = await axios.get(`${import.meta.env.VITE_API}/marathon-registration/${userEmail}?search=${searchQuery}`);
+      // LOG THE DATA COMMING FROM THE DATABASE IN THE CONSOLE AND SAVE THEM IN THE STATE
       console.log(data);
       setApplications(data);
     } catch (error) {
+      // IF SOMETHING GOES WRONG, LOG THE ERROR OBJECT IN THE CONSOLE
       toast.error("Somethin went wrong!!");
       console.log(error.message);
     } finally {
+      // SET THE LOADING STATE TO FALSE:
       setLoading(false)
     }
   }
+
+  // FETCH THE NECCESSARY DATA:
   useEffect(() => {
     fetchApplications(user?.email, search);
   }, [user.email, search])
 
+  // FUNCTION TO HANDLE THE SEARCH FUNCTIONLITY SET WHATEVER USER TYPE IN THE SEARCH BOX TO THE SEARCH STATE
   const handleSearch = (e) => {
     setSearch(e.target.value);
   }
 
+  // FUNCTION: TO HANDLE THE EDIT FUNCTIONALITY
   const handleEdit = (id) => {
     console.log("Edit Marathon:", id);
-    // Navigate to the edit page or handle editing logic here
+    // WHEN USER CLICK ON THE 'EDIT' BUTTON, REDIRECT THE USER TO THE 'APPLICATION UPDATE' PAGE, WHERE THE USER CAN SEE THE PREVIOUS INFORMATION HE OR SHE PROVIDED AND CAN UPDATE ANY INFORMATION, IF HE OR SHE WANT
     navigate(`/dashboard/my-applications/update/${id}`)
   };
 
+  // FUNCTION: TO HANDLE THE DELETE FUNCTIONALITY
   const handleDelete = async (id) => {
     console.log("Delete Marathon:", id);
-
+    // ASK USER FOR CONFIRMATION
     const confirmed = confirm("Are You Sure? You can not reverse this action")
+    // IF USER CONFIRM, THEN EXECUTE THE DELETE FUNCTIONALITY
     if (confirmed) {
-      // Implement delete functionality 
       try {
+        // MAKE A DELETE REQUEST TO THE BACKEND
         const { data } = await axios.delete(`${import.meta.env.VITE_API}/marathon-registrations/delete/${id}`);
+        // ON SUCCESSFULL DELETE, SHOW USER A SUCCESS MESSAGE
         if (data.deletedCount === 1) {
           toast.success("Application deleted successfully!!");
           fetchData(user?.email);
         }
       } catch (error) {
+        // IF SOMETHING GOES WRONG, LOG THE ERROR OBJECT IN THE CONSOLE
         console.log(error.message);
         toast.error("Something went wrong!");
       }
     }
   };
 
-  // if loading is true, render the spinner
+  // RENDER THE SPINNER, WHEN THE DATA IS BEING LOADED
   if (loading) {
     return <Spinner></Spinner>
   }

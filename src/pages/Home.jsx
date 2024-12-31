@@ -17,11 +17,11 @@ const Home = () => {
   const [loading, setLoading] = useState(true);
   const {darkMood, setDarkMood} = useContext(AuthContext);
 
-  // change the page title:
+  // CHANGE THE PAGE TITLE:
   document.title = "Home | Marathon Hub";
 
+  // FETCH NECESSARY DATA FROM THE DATABASE: => HERE ONLY SIX MARATHON EVENT DATA TO DISPLAY IN THE HOME PAGE
   useEffect(() => {
-    // fetch 6 running campaigns:
     fetch('https://unity-fund-server.vercel.app/campaigns/limit/6')
       .then(res => res.json())
       .then(data => {
@@ -39,27 +39,27 @@ const Home = () => {
 
   return (
     <div className={`bg-gray-50 ${darkMood ? 'dark' : ''} dark:bg-slate-800`}>
-      {/* Banner/Slider Section */}
+      {/* SLIDER SECTION */}
       <section>
         <Slider></Slider>
       </section>
 
-      {/* Marathon Section */}
+      {/* HOT MARATHONS SECTIONS: => ONLY SIX MARATHON EVENT DATA WILL BE DISPLAYED */}
       <section>
         <Marathons></Marathons>
       </section>
 
-      {/* Upcomming Marathon Section */}
+      {/* UPCOMMING MARATHON EVENT SECTIONS: UPCOMMING MARATHON EVENT WILL BE DISPLAYED HERE */}
       <section>
         <UpcomingMarathons></UpcomingMarathons>
       </section>
 
-      {/* Why to choose us*/}
+      {/* 'WHY TO CHOOSE US' SECTIONS'*/}
       <section>
         <WhyUs />
       </section>
 
-      {/* About us section */}
+      {/* ABOUT US SECTIONS */}
       <section>
         <AboutUs></AboutUs>
       </section>
