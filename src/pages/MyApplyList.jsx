@@ -75,7 +75,7 @@ const MyApplyList = () => {
         // ON SUCCESSFULL DELETE, SHOW USER A SUCCESS MESSAGE
         if (data.deletedCount === 1) {
           toast.success("Application deleted successfully!!");
-          fetchData(user?.email);
+          fetchApplications(user?.email);
         }
       } catch (error) {
         // IF SOMETHING GOES WRONG, LOG THE ERROR OBJECT IN THE CONSOLE
